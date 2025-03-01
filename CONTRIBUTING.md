@@ -41,12 +41,12 @@ Tags conventions also indicate below.
 >
 > Issue template selection and edit target is related.
 
-| Target word | GitHub tag   | Issue template | Description                              |
-| ----------- | ------------ | -------------- | ---------------------------------------- |
-| `feature`   | `tg/feature` | Feature add    | Make new feature                         |
-| `doc`       | `tg/doc`     | Documentation  | Documentation editing                    |
-| `infra`     | `tg/infra`   | Infrastructure | Maintaining of repository infrastructure |
-| `misc`      | `tg/misc`    | Miscellaneous  | Other of them                            |
+| Target word | GitHub tag   | Issue template | Description                           |
+| ----------- | ------------ | -------------- | ------------------------------------- |
+| `feature`   | `tg/feature` | Feature add    | Code editing                          |
+| `doc`       | `tg/doc`     | Documentation  | Document editing                      |
+| `infra`     | `tg/infra`   | Infrastructure | Repository infrastructure maintaining |
+| `misc`      | `tg/misc`    | Miscellaneous  | Other of them                         |
 
 Feature fix `fix/*` Feature fix - something need modification
 
