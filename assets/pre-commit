@@ -1,0 +1,46 @@
+#!/usr/bin/env sh
+#
+# Branch name verification git hook
+# - Check the branch name format is correct
+#
+# Author: aKuad
+#
+
+branch_name=`git branch --show-current`
+
+if [ $branch_name = "main" ]; then
+  echo "\033[1;31mDirect committing to main is prohibited\033[0m" > /dev/stderr
+  exit 1
+fi
+
+branch_name_target=`echo $branch_name -n | awk -F / '{print $1}'`
+branch_name_act=`echo $branch_name -n | awk -F / '{print $2}'`
+
+if [ "$branch_name_target" = "" ] || [ "$branch_name_act" = "" ]; then
+  echo "\033[1;31mInvalid branch name format\033[0m" > /dev/stderr
+  echo '\033[0;33m    Hint: Branch name format is `<target>/<action>/<desc>`\033[0m' > /dev/stderr
+  echo '\033[0;33m          For details, see CONTRIBUTING.md\033[0m' > /dev/stderr
+  exit 1
+fi
+
+is_verify_ok=1
+
+if [ "`echo $branch_name_target | grep -E '^(feature|doc|infra|misc)'`" = "" ]; then
+  echo "\033[1;31mInvalid target word\033[0m" > /dev/stderr
+  echo "\033[0;33m    Hint: Target word must be 'feature', 'doc', 'infra' or 'misc'" > /dev/stderr
+  echo '\033[0;33m          For details, see CONTRIBUTING.md\033[0m' > /dev/stderr
+  is_verify_ok=0
+fi
+
+if [ "`echo $branch_name_act | grep -E '^(add|mod|fix|del)'`" = "" ]; then
+  echo "\033[1;31mInvalid action word\033[0m" > /dev/stderr
+  echo "\033[0;33m    Hint: Action word must be 'add', 'mod', 'fix' or 'del'" > /dev/stderr
+  echo '\033[0;33m          For details, see CONTRIBUTING.md\033[0m' > /dev/stderr
+  is_verify_ok=0
+fi
+
+if [ $is_verify_ok = 0 ]; then
+  exit 1  # disallow committing
+fi
+
+exit 0
