@@ -14,12 +14,15 @@ sequenceDiagram
   M->>+S: Access /<ID>/moderator
   S-->>-M: Page view
   M->>S: Websocket connect (moderator)
+  S->>M: Participant count
 
   Note over P,S: Participants join (by QR)
   M-->P: View join QR
   P->>+S: Access /<ID>
   S-->>-P: Page view
   P->>S: Websocket connect (participant)
+  S->>P: Moderator status
+  S->>M: Participant count
 
   Note over P,S: Participants join (by ID)
   M-->P: Check room ID
@@ -27,6 +30,8 @@ sequenceDiagram
   P->>+S: Access /<ID>
   S-->>-P: Page view
   P->>S: Websocket connect (participant)
+  S->>P: Moderator status
+  S->>M: Participant count
 
   Note over P,S: Survey start/end
   M->>+S: Start survey
