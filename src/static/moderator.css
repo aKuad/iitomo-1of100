@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+/* Root elements */
+:root {
+  --board-head-height: 30vh;
+  --board-body-height: 70vh;
+}
+
+html {
+  font-family: sans-serif;
+  /* font-size: 20px; */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Board head elements */
+#board-head {
+  height: var(--board-head-height);
+  background-color: #fff;
+
+  color: hsl(240, 100%, 40%);
+  font-size: calc(var(--board-head-height) * 0.9);
+  line-height: var(--board-head-height);
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+}
+
+#participant-count-view {
+  color: hsl(0, 100%, 40%);
+}
+
+
+/* Board body elements */
+@font-face {
+  font-family: "DSEG7Classic";
+  src:
+    url("./fonts/DSEG7Classic-BoldItalic.woff2") format("woff2"),
+    url("./fonts/DSEG7Classic-BoldItalic.woff")  format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+
+#board-body {
+  height: var(--board-body-height);
+  background-color: #000;
+  position: relative;
+
+  font-family: "DSEG7Classic", sans-serif;
+  color: #fff;
+  font-size: calc(var(--board-body-height) * 0.9);
+  line-height: var(--board-body-height);
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#unit-view {
+  color: hsl(60, 100%, 40%);
+  font-size: 10vh;
+  font-weight: bold;
+  font-style: normal;
+
+  line-height: 1em;
+  position: absolute;
+  right: 0.2em;
+  bottom: 0.2em;
+}
+
+
+/* Other */
+#error-view {
+  width: 100vw;
+  background-color: #000;
+  color: hsl(0, 100%, 70%);
+  font-size: 10vh;
+
+  text-align: center;
+  position: fixed;
+  z-index: 100; /* High priority */
+  bottom: 5vh;
+}
