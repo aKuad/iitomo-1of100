@@ -1,43 +1,30 @@
 # Packet protocols
 
-## Survey control packet
+## Boolean packet
 
-moderator -> server
+| Length [bytes] | Type  | Description                       |
+| -------------: | ----- | --------------------------------- |
+|              1 | uint8 | Packet type ID                    |
+|              1 | uint8 | Boolean value (0: false, 1: true) |
 
-server -> participant
+| Type             | ID   | Direction             | True       | False         |
+| ---------------- | ---- | --------------------- | ---------- | ------------- |
+| Survey control   | 0x11 | moderator -> server   | start      | -             |
+|                  |      | participant <- server | start      | stop          |
+| Survey response  | 0x12 | participant -> server | set 'yes'  | unset 'yes'   |
+| Moderator status | 0x13 | participant <- server | connecting | disconnecting |
 
-| Length [bytes] | Type  | Description                        |
-| -------------: | ----- | ---------------------------------- |
-|              1 | uint8 | Packet type ID (0x10)              |
-|              1 | uint8 | Survey control (0: stop, 1: start) |
+## Uint16 packet
 
-## Survey response packet
-
-participant -> server
-
-| Length [bytes] | Type  | Description                                |
-| -------------: | ----- | ------------------------------------------ |
-|              1 | uint8 | Packet type ID (0x20)                      |
-|              1 | uint8 | Survey response (0: unset yes, 1: set yes) |
-
-## Moderator status packet
-
-server -> participant
-
-| Length [byte] | Type  | Description                                      |
-| ------------: | ----- | ------------------------------------------------ |
-|             1 | uint8 | Packet type ID (0x30)                            |
-|             1 | uint8 | Moderator status (0: Disconnected, 1: connected) |
-
-## Participant count packet
-
-serve -> moderator
-
-| Length [byte] | Type   | Description            |
-| ------------: | ------ | ---------------------- |
-|             1 | uint8  | Packet type ID (0x40)  |
-|             2 | uint16 | Participant count (\*) |
+| Length [byte] | Type   | Description             |
+| ------------: | ------ | ----------------------- |
+|             1 | uint8  | Packet type ID          |
+|             2 | uint16 | Unsigned int value (\*) |
 
 > [!NOTE]
 >
 > (\*) Value is little endian. To get original value: `array[1] | (array[2] << 8)`
+
+| Type              | ID   | Direction             | Value                    |
+| ----------------- | ---- | --------------------- | ------------------------ |
+| Participant count | 0x21 | participant <- server | Count of all participant |
