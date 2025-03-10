@@ -24,7 +24,8 @@
 >
 > (\*) Value is little endian. To get original value: `array[1] | (array[2] << 8)`
 
-| Type              | ID   | Direction             | Value                       |
-| ----------------- | ---- | --------------------- | --------------------------- |
-| Participant count | 0x21 | participant <- server | Count of all participant    |
-| Survey start      | 0x22 | moderator -> server   | Duration of survey response |
+| Type              | ID   | Direction             | Value                                |
+| ----------------- | ---- | --------------------- | ------------------------------------ |
+| Participant count | 0x21 | participant <- server | Count of all participant             |
+| Survey start      | 0x22 | moderator -> server   | Duration of survey response          |
+| Survey result     | 0x23 | moderator <- server   | Count of 'Yes' responded participant |
