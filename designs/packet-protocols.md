@@ -9,8 +9,7 @@
 
 | Type             | ID   | Direction             | True       | False         |
 | ---------------- | ---- | --------------------- | ---------- | ------------- |
-| Survey control   | 0x11 | moderator -> server   | start      | -             |
-|                  |      | participant <- server | start      | stop          |
+| Survey control   | 0x11 | participant <- server | start      | stop          |
 | Survey response  | 0x12 | participant -> server | set 'yes'  | unset 'yes'   |
 | Moderator status | 0x13 | participant <- server | connecting | disconnecting |
 
@@ -25,6 +24,7 @@
 >
 > (\*) Value is little endian. To get original value: `array[1] | (array[2] << 8)`
 
-| Type              | ID   | Direction             | Value                    |
-| ----------------- | ---- | --------------------- | ------------------------ |
-| Participant count | 0x21 | participant <- server | Count of all participant |
+| Type              | ID   | Direction             | Value                       |
+| ----------------- | ---- | --------------------- | --------------------------- |
+| Participant count | 0x21 | participant <- server | Count of all participant    |
+| Survey start      | 0x22 | moderator -> server   | Duration of survey response |
