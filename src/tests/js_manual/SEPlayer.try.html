@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../static/SEPlayer.js"></script>
+    <script>
+      /**
+       * @file Tests for `SEPlayer.js` module
+       *
+       * Test steps:
+       *   1. Open this file by browser
+       *   2. Input a file, click buttons and so on
+       *   3. Check behavior below
+       *
+       * Test cases:
+       *   - Can play an input audio file
+       *   - Can get duration of input audio file
+       *   - Can unset file, then next nothing play
+       *   - Can modify gain (volume) of audio play
+       *
+       * @author aKuad
+       */
+      window.addEventListener("load", () => {
+        const se_player = new SEPlayer();
+        document.getElementById("input-file").addEventListener("input" , e => {
+          const file = e.target.files[0];
+          if(file) { se_player.set_file(file).then(dur => console.log(`Duration: ${dur}`)); }
+        });
+        document.getElementById("button-play"      ).addEventListener("click", () => { se_player.play() });
+        document.getElementById("button-unset-file").addEventListener("click", () => { se_player.unset_file() });
+        document.getElementById("gain-control"     ).addEventListener("input", e => {
+          se_player.set_gain(e.target.value);
+        });
+      });
+    </script>
+    <title>SEPlaye.js module test</title>
+  </head>
+
+  <body>
+    <p>Audio file to play: <input type="file" id="input-file"></p>
+    <p><button id="button-play">Play</button><button id="button-unset-file">Unset file</button></p>
+    <p>Gain control: <input type="range" min="0" max="3" value="1" step="any" id="gain-control"></p>
+  </body>
+</html>
