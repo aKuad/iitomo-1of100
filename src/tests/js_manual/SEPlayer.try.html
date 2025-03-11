@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../../static/SEPlayer.js"></script>
-    <script>
+    <script type="module">
       /**
        * @file Tests for `SEPlayer.js` module
        *
        * Test steps:
-       *   1. Open this file by browser
-       *   2. Input a file, click buttons and so on
-       *   3. Check behavior below
+       *   1. Execute `main.js` (in same directory) with Deno - `deno run --allow-net --allow-read main.js`
+       *   2. Access to `http://localhost:8000/SEPlayer.test.html` with browser
+       *   3. Input a file, click buttons and so on
+       *   4. Check behavior below
        *
        * Test cases:
        *   - Can play an input audio file
@@ -21,6 +21,8 @@
        *
        * @author aKuad
        */
+      import { SEPlayer } from "/static/SEPlayer.js";
+
       window.addEventListener("load", () => {
         const se_player = new SEPlayer();
         document.getElementById("input-file").addEventListener("input" , e => {

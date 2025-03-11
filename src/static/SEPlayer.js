@@ -5,7 +5,7 @@
  */
 
 
-class SEPlayer {
+export class SEPlayer {
   /**
    * Audio context what is base platform of this object
    *
