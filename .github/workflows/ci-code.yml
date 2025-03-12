@@ -22,7 +22,7 @@ jobs:
       with:
         deno-version: v2.x
     - name: Lint all js/ts files
-      run: deno lint
+      run: deno lint --ignore"**/qrcode.min.js"
 
 
   # Run all JS unit-tests by deno test
