@@ -49,6 +49,7 @@ body {
   height: var(--board-body-height);
   background-color: #000;
   position: relative;
+  display: block;
 
   font-family: "DSEG7Classic", sans-serif;
   color: #fff;
