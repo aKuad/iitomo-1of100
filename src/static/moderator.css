@@ -8,7 +8,6 @@
 
 html {
   font-family: sans-serif;
-  /* font-size: 20px; */
 }
 
 body {
@@ -70,6 +69,102 @@ body {
   position: absolute;
   right: 0.2em;
   bottom: 0.2em;
+}
+
+
+/* Config elements */
+#config-container {
+  height: 100vh;
+  max-width: 50vw;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  padding: 5em;
+  background-color: hsla(0, 0%, 90%, 0.9);
+  border-left: solid 2px hsl(0, 0%, 50%);
+
+  font-size: 24px;
+  color: #000;
+
+  position: fixed;
+  top: 0;
+  right: -50%;  /* to hide */
+  transition: right 0.2s linear;
+
+  z-index: 5;
+}
+#config-view-toggle {
+  display: none;
+}
+#config-container:has(#config-view-toggle:checked) {
+  right: 0; /* to show */
+}
+
+#config-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2em;
+  margin: 0 0 1em 0;
+}
+
+#config-guide {
+  margin: 2em 0;
+  color: hsl(0, 0%, 40%);
+  text-align: center;
+}
+
+.config-item-container {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin: 1em 0;
+}
+
+#config-survey-duration {
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2em;
+  width: 4em;
+  text-align: right;
+}
+#config-se-name {
+  margin: 0.5em 0;
+}
+#config-se-name:empty::before {
+  content: "No file set";
+  color: hsl(0, 0%, 40%);
+  font-style: italic;
+}
+#config-se-file-in {
+  display: none;
+}
+#config-survey-duration, #config-se-file-label, #config-se-unset {
+  position: static;
+  font-size: inherit;
+  display: inline-block;
+  line-height: 1.2em;
+  margin: 0 0.5em 0 0;
+  padding: 0.2em;
+  background-color: #fff;
+  border: solid 2px #000;
+  border-radius: 4px;
+}
+#config-se-volume {
+  width: 10em;
+}
+#config-room-id {
+  display: block;
+}
+#config-join-qr {
+  border: solid 10px #fff;
+  width: 200px;
+  height: 200px;
+}
+
+#config-repo-link {
+  font-size: 0.8em;
+  margin: 2em 0;
+  text-align: center;
 }
 
 

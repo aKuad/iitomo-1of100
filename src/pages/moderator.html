@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/moderator.css">
+    <script type="text/javascript" src="/static/qrcode.min.js"></script>
+    <script type="module" src="/static/moderator.js"></script>
     <title>Moderator - Iitomo 1of100</title>
   </head>
 
@@ -11,5 +13,34 @@
     <div id="board-head"><output id="participant-count-view">100</output>人中</div>
     <output id="board-body">888<div id="unit-view">人</div></output>
     <div id="error-view">Error view here</div>
+    <div id="config-container">
+      <input type="checkbox" id="config-view-toggle" checked>
+      <p id="config-header">Iitomo 1of100</p>
+      <p id="config-guide">Escape key to show/hide this config</p>
+      <div class="config-item-container">
+        <div>Survey duration:</div>
+        <div><input type="number" id="config-survey-duration" value="6" min="1" max="65535">sec</div>
+      </div>
+      <div class="config-item-container">
+        <div>Sound effect:</div>
+        <div>
+          <div id="config-se-name"></div>
+          <input type="file" id="config-se-file-in"><label id="config-se-file-label" for="config-se-file-in">Set a file</label><button id="config-se-unset">Unset file</button>
+        </div>
+      </div>
+      <div class="config-item-container">
+        <div>Sound effect volume:</div>
+        <div><input type="range" id="config-se-volume" value="1" min="0" max="3" step="any"></div>
+      </div>
+      <div class="config-item-container">
+        <div>Room ID:</div>
+        <output id="config-room-id">ID123456</output>
+      </div>
+      <div class="config-item-container">
+        <div>Participant join QR:</div>
+        <div id="config-join-qr"></div>
+      </div>
+      <p id="config-repo-link">Source on GitHub: <a target="_blank" href="https://github.com/aKuad/iitomo-1of100">aKuad/iitomo-1og100</a></p>
+    </div>
   </body>
 </html>
