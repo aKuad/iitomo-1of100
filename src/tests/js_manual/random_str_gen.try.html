@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module">
+      /**
+       * @file Tests for `random_str_gen.js` module
+       *
+       * Test steps:
+       *   1. Execute `main.js` (in same directory) with Deno - `deno run --allow-net --allow-read main.js`
+       *   2. Access to `http://localhost:8000/random_str_gen.test.html` with browser
+       *   3. Input a number, click buttons and so on
+       *   4. Check behavior below
+       *
+       * Test cases:
+       *   - Can generate random string (number, uppercase and lowercase alphabets) by specified length
+       *   - Throw if specified length is negative value
+       *
+       * @author aKuad
+       */
+      import { random_str_gen } from "/static/random_str_gen.js";
+
+      window.addEventListener("load", () => {
+        document.getElementById("run-generate").addEventListener("click", () => {
+          const length = document.getElementById("string-length").value;
+          document.getElementById("generated-str").innerText = random_str_gen(length);
+        });
+
+        document.getElementById("run-negative-error").addEventListener("click", () => {
+          console.log("-- try_negative_length_error");
+          try_negative_length_error();
+        });
+      });
+
+      function try_negative_length_error() {
+        try {
+          random_str_gen(-1);
+          console.error("--- NG: No error thrown");
+        } catch(e) {
+          if(e instanceof RangeError && e.message.includes("`length` must be 0 or positive value, but got -1")) {
+            console.log("--- OK");
+          } else {
+            console.error("--- NG: Unexpected error thrown");
+            console.error(e);
+          }
+        }
+      }
+    </script>
+    <title>random_str_gen.js module test</title>
+  </head>
+
+  <body>
+    <p>Length of string<input type="number" id="string-length" value="10" min="0"></p>
+    <p><button id="run-generate">Generate random string</button></p>
+    <p>Generated string: <output id="generated-str"></output></p>
+    <hr>
+    <p><button id="run-negative-error">Negative value error test</button></p>
+  </body>
+</html>
