@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module">
+      /**
+       * @file Tests for `Digits3Shuffle.js` module
+       *
+       * Test steps:
+       *   1. Execute `main.js` (in same directory) with Deno - `deno run --allow-net --allow-read main.js`
+       *   2. Access to `http://localhost:8000/Digits3Shuffle.try.html` with browser
+       *   3. Click buttons
+       *   4. Check behavior below
+       *
+       * Test cases:
+       *   - Can display random 3 digits at 10 [times/sec]
+       *
+       * @author aKuad
+       */
+      import { Digits3Shuffle } from "/static/Digits3Shuffle.js";
+
+      window.addEventListener("load", () => {
+        const digits_3_shuffle = new Digits3Shuffle(document.getElementById("view-field"));
+        document.getElementById("button-run" ).addEventListener("click", () => { digits_3_shuffle.run() });
+        document.getElementById("button-stop").addEventListener("click", () => { digits_3_shuffle.stop() });
+      });
+    </script>
+    <title>Digits3Shuffle.js module test</title>
+  </head>
+
+  <body>
+    <p><button id="button-run">Run</button><button id="button-stop">Stop</button></p>
+    <p>View: <output id="view-field"></output></p>
+  </body>
+</html>
