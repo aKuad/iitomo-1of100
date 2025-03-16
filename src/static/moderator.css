@@ -149,6 +149,9 @@ body {
   border: solid 2px #000;
   border-radius: 4px;
 }
+#config-se-file-label, #config-se-unset {
+  cursor: pointer;
+}
 #config-se-volume {
   width: 10em;
 }
