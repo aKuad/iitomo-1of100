@@ -1,10 +1,13 @@
 /**
- * @file Sound Effect Player
+ * @file Sound Effect Player module
  *
  * @author aKuad
  */
 
 
+/**
+ * Sound Effect Player module
+ */
 export class SEPlayer {
   /**
    * Audio context what is base platform of this object
