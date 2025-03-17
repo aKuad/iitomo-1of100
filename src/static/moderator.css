@@ -106,12 +106,6 @@ body {
   margin: 0 0 1em 0;
 }
 
-#config-guide {
-  margin: 2em 0;
-  color: hsl(0, 0%, 40%);
-  text-align: center;
-}
-
 .config-item-container {
   display: flex;
   align-items: center;
@@ -166,7 +160,7 @@ body {
   cursor: pointer;
 }
 
-#config-qr-view-guide, #config-repo-link {
+.config-guide-text {
   font-size: 0.8em;
   margin: 2em 0;
   text-align: center;
