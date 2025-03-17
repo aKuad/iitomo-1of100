@@ -11,10 +11,11 @@ globalThis.addEventListener("load", () => {
     }
   });
 
-  new QRCode(document.getElementById("config-join-qr-field"), {
+  const qr_field_regular = document.getElementById("config-join-qr-field");
+  new QRCode(qr_field_regular, {
     text: "https://github.com",
-    width: 200,
-    height: 200
+    width: qr_field_regular.clientWidth,
+    height: qr_field_regular.clientHeight
   });
 
   const qr_field_large = document.getElementById("large-qr-field");
