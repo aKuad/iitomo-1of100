@@ -1,0 +1,227 @@
+@charset "UTF-8";
+
+/* Root elements */
+:root {
+  --board-head-height: 30vh;
+  --board-body-height: 70vh;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Board head elements */
+#board-head {
+  height: var(--board-head-height);
+  background-color: #fff;
+
+  color: hsl(240, 100%, 40%);
+  font-size: calc(var(--board-head-height) * 0.9);
+  line-height: var(--board-head-height);
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+}
+
+#participant-count-view {
+  color: hsl(0, 100%, 40%);
+}
+
+
+/* Board body elements */
+@font-face {
+  font-family: "DSEG7Classic";
+  src:
+    url("./fonts/DSEG7Classic-BoldItalic.woff2") format("woff2"),
+    url("./fonts/DSEG7Classic-BoldItalic.woff")  format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+
+#board-body {
+  height: var(--board-body-height);
+  background-color: #000;
+  position: relative;
+  display: block;
+
+  font-family: "DSEG7Classic", sans-serif;
+  color: #fff;
+  font-size: calc(var(--board-body-height) * 0.9);
+  line-height: var(--board-body-height);
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#unit-view {
+  color: hsl(60, 100%, 40%);
+  font-size: 10vh;
+  font-weight: bold;
+  font-style: normal;
+
+  line-height: 1em;
+  position: absolute;
+  right: 0.2em;
+  bottom: 0.2em;
+}
+
+
+/* Config elements */
+#config-container {
+  height: 100vh;
+  max-width: 50vw;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  padding: 5em;
+  background-color: hsla(0, 0%, 90%, 0.9);
+  border-left: solid 2px hsl(0, 0%, 50%);
+
+  font-size: 24px;
+  color: #000;
+
+  position: fixed;
+  top: 0;
+  right: -50%;  /* to hide */
+  transition: right 0.2s linear;
+
+  z-index: 5;
+}
+#config-view-toggle {
+  display: none;
+}
+#config-container:has(#config-view-toggle:checked) {
+  right: 0; /* to show */
+}
+
+#config-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2em;
+  margin: 0 0 1em 0;
+}
+
+.config-item-container {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin: 1em 0;
+}
+
+#config-survey-duration {
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2em;
+  width: 4em;
+  text-align: right;
+}
+#config-se-name {
+  margin: 0.5em 0;
+}
+#config-se-name:empty::before {
+  content: "No file set";
+  color: hsl(0, 0%, 40%);
+  font-style: italic;
+}
+#config-se-file-in {
+  display: none;
+}
+#config-survey-duration, #config-se-file-label, #config-se-unset {
+  position: static;
+  font-size: inherit;
+  display: inline-block;
+  line-height: 1.2em;
+  margin: 0 0.5em 0 0;
+  padding: 0.2em;
+  background-color: #fff;
+  border: solid 2px #000;
+  border-radius: 4px;
+}
+#config-se-file-label, #config-se-unset {
+  cursor: pointer;
+}
+#config-se-volume {
+  width: 10em;
+}
+#config-room-id {
+  display: block;
+}
+#config-join-qr-field {
+  display: block;
+  border: solid 10px #fff;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+}
+
+.config-guide-text {
+  font-size: 0.8em;
+  margin: 2em 0;
+  text-align: center;
+}
+
+
+/* Join QR large view */
+#large-qr-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: hsla(0, 0%, 90%, 0.9);
+  border-top: solid 2px hsl(0, 0%, 50%);
+
+  position: fixed;
+  bottom: calc(-100% - 2px);  /* to hide */
+  right: 0%;
+  transition: bottom 0.2s linear;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 6; /* Higher than #config-container*/
+}
+#large-qr-view-toggle {
+  display: none;
+}
+#large-qr-container:has(#large-qr-view-toggle:checked) {
+  bottom: 0;  /* to show */
+}
+#large-qr-click-detector {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  z-index: 7; /* Higher than #large-qr-container*/
+}
+
+#large-qr-field {
+  border: solid 30px #fff;
+  width: 800px;
+  height: 800px;
+}
+#large-qr-guide {
+  font-size: 48px;
+  color: #000;
+}
+
+
+/* Other */
+#error-view {
+  width: 100vw;
+  background-color: #000;
+  color: hsl(0, 100%, 70%);
+  font-size: 10vh;
+
+  text-align: center;
+  position: fixed;
+  z-index: 100; /* High priority */
+  bottom: 5vh;
+}
