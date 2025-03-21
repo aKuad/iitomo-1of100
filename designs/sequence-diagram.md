@@ -7,29 +7,31 @@ sequenceDiagram
   participant S as Server
 
   Note over P,S: Moderator join
-  M->>+S: Access / (index)
+  M->>+S: Access<br>/ (index)
   S-->>-M: Page view
 
   M->>M: Set room ID (or random generate)
-  M->>+S: Access /<ID>/moderator
+  M->>+S: Access<br>/moderator/<ID>
   S-->>-M: Page view
-  M->>S: Websocket connect (moderator)
+  M->>S: Websocket connect<br>/api/moderator/<ID>
   S->>M: Participant count
 
   Note over P,S: Participants join (by QR)
   M-->P: View join QR
-  P->>+S: Access /<ID>
+  P->>+S: Access<br>/participant/<ID>
   S-->>-P: Page view
-  P->>S: Websocket connect (participant)
+  P->>S: Websocket connect<br>/api/participant/<ID>
   S->>P: Moderator status
   S->>M: Participant count
 
   Note over P,S: Participants join (by ID)
   M-->P: Check room ID
-  P->>P: Set room ID
-  P->>+S: Access /<ID>
+  P->>+S: Access<br>/ (index)
   S-->>-P: Page view
-  P->>S: Websocket connect (participant)
+  P->>P: Set room ID
+  P->>+S: Access<br>/participant/<ID>
+  S-->>-P: Page view
+  P->>S: Websocket connect<br>/api/participant/<ID>
   S->>P: Moderator status
   S->>M: Participant count
 
