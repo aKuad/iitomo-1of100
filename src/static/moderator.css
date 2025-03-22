@@ -114,10 +114,6 @@ body {
 }
 
 #config-survey-duration {
-  font-size: inherit;
-  margin: 0;
-  padding: 0;
-  line-height: 1.2em;
   width: 4em;
   text-align: right;
 }
@@ -133,15 +129,7 @@ body {
   display: none;
 }
 #config-survey-duration, #config-se-file-label, #config-se-unset {
-  position: static;
-  font-size: inherit;
-  display: inline-block;
-  line-height: 1.2em;
   margin: 0 0.5em 0 0;
-  padding: 0.2em;
-  background-color: #fff;
-  border: solid 2px #000;
-  border-radius: 4px;
 }
 #config-se-file-label, #config-se-unset {
   cursor: pointer;
