@@ -29,6 +29,8 @@ const allowed_chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstu
  */
 export function is_only_num_alp(str) {
   for(let c = 0; c < str.length; c++) {
+    // Lint ignore - Control regex is OK for ascii (including control characters) or non-ascii checking
+    // deno-lint-ignore no-control-regex
     if(!(/[\x00-\x7F]/.test(str[c])))
       return { is_correct: false, incorrect_reason: "Non-ascii character including" };
 
