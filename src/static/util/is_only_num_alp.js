@@ -24,6 +24,8 @@ const allowed_chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstu
 /**
  * Check passed string is including only numbers and/or alphabets (uppercase and lowercase)
  *
+ * Note: When `str` has multiple incorrect reason, first detected reason will be returned
+ *
  * @param {string} str String to check
  * @returns {CheckResult} Check result of `str`
  */
