@@ -25,7 +25,7 @@ const allowed_chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstu
  * Check passed string is including only numbers and/or alphabets (uppercase and lowercase)
  *
  * @param {string} str String to check
- * @returns {CheckResult}
+ * @returns {CheckResult} Check result of `str`
  */
 export function is_only_num_alp(str) {
   for(let c = 0; c < str.length; c++) {
