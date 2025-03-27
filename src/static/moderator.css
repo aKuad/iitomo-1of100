@@ -82,7 +82,6 @@ body {
   background-color: hsla(0, 0%, 90%, 0.9);
   border-left: solid 2px hsl(0, 0%, 50%);
 
-  font-size: 24px;
   color: #000;
 
   position: fixed;
@@ -102,7 +101,7 @@ body {
 #config-header {
   text-align: center;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 1.8rem;
   margin: 0 0 1em 0;
 }
 
@@ -114,10 +113,6 @@ body {
 }
 
 #config-survey-duration {
-  font-size: inherit;
-  margin: 0;
-  padding: 0;
-  line-height: 1.2em;
   width: 4em;
   text-align: right;
 }
@@ -133,15 +128,7 @@ body {
   display: none;
 }
 #config-survey-duration, #config-se-file-label, #config-se-unset {
-  position: static;
-  font-size: inherit;
-  display: inline-block;
-  line-height: 1.2em;
   margin: 0 0.5em 0 0;
-  padding: 0.2em;
-  background-color: #fff;
-  border: solid 2px #000;
-  border-radius: 4px;
 }
 #config-se-file-label, #config-se-unset {
   cursor: pointer;
@@ -161,8 +148,6 @@ body {
 }
 
 .config-guide-text {
-  font-size: 0.8em;
-  margin: 2em 0;
   text-align: center;
 }
 

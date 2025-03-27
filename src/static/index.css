@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+/* Input elements */
+#room-id-error {
+  color: hsl(0, 100%, 70%);
+  min-height: 1.2em;
+}
+
+#room-id-input {
+  width: 8em;
+  text-align: center;
+}
+
+#join-participant, #join-moderator {
+  text-decoration: none;
+  color: inherit;
+}
+.link-disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.2;
+}
