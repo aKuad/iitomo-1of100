@@ -3,3 +3,7 @@
 # Deno generated files
 *coverage
 *docs
+
+# Audio files (considering user ready sound effects)
+*.flac
+*.mp3
