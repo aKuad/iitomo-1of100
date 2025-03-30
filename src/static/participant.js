@@ -6,6 +6,7 @@
 
 import { is_boolean_packet, decode_boolean_packet, encode_boolean_packet, PACKET_ID_SURVEY_CONTROL, PACKET_ID_SURVEY_RESPONSE, PACKET_ID_MODERATOR_STATUS } from "./packet/boolean.js";
 
+
 globalThis.addEventListener("load", () => {
   const room_id = location.pathname.split("/")[2];
   document.getElementById("room-id-view").innerText = room_id;
