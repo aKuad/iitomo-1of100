@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/common.css">
+    <script>
+      window.addEventListener("load", () => {
+        const room_id = location.pathname.split("/")[2];
+        document.getElementById("current-id-view").innerText = room_id;
+      });
+    </script>
+    <title>Moderator duplicated - Iitomo 1of100</title>
+  </head>
+
+  <body>
+    <header>Iitomo 1of100</header>
+    <div class="centering">
+      <div class="text-large">The room is in use</div>
+      <div class="text-small">Current ID: <span id="current-id-view"></span></div>
+      <div class="text-normal"><a href="/">Back to top</a></div>
+    </div>
+  </body>
+</html>
