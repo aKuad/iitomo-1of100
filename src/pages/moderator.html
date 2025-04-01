@@ -11,9 +11,10 @@
   </head>
 
   <body>
-    <div id="board-head"><output id="participant-count-view">100</output>人中</div>
-    <output id="board-body">888<div id="unit-view">人</div></output>
-    <div id="error-view">Error view here</div>
+    <div id="board-head"><output id="participant-count-view">0</output>人中</div>
+    <output id="board-body">!!!<div id="unit-view">人</div></output>
+    <div id="error-view"></div>
+
     <div id="config-container">
       <input type="checkbox" id="config-view-toggle" checked>
       <p id="config-header">Iitomo 1of100</p>
@@ -34,7 +35,7 @@
       </div>
       <div class="config-item-container">
         <div>Room ID:</div>
-        <output id="config-room-id">ID123456</output>
+        <output id="config-room-id"></output>
       </div>
       <div class="config-item-container">
         <div>Participant join QR:</div>
@@ -44,6 +45,7 @@
       <p class="config-guide-text text-small">Escape key to show/hide this config</p>
       <p class="config-guide-text text-small">Source on GitHub: <a target="_blank" href="https://github.com/aKuad/iitomo-1of100">aKuad/iitomo-1og100</a></p>
     </div>
+
     <div id="large-qr-container">
       <input type="checkbox" id="large-qr-view-toggle">
       <label for="large-qr-view-toggle" id="large-qr-click-detector"></label>
