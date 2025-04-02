@@ -11,6 +11,7 @@ import { SEPlayer } from "./util/SEPlayer.js";
 
 
 globalThis.addEventListener("load", () => {
+  // Variables & UI objects
   const room_id = location.pathname.split("/")[2];
   const se_player = new SEPlayer();
   const digits_3_shuffle = new Digits3Shuffle(document.getElementById("board-body"));
@@ -18,6 +19,7 @@ globalThis.addEventListener("load", () => {
   const ws = new WebSocket(`/api/moderator/${room_id}`);
   ws.binaryType = "arraybuffer";
 
+  // Key input process
   globalThis.addEventListener("keydown", e => {
     if(e.key === "Escape") {
       document.getElementById("config-view-toggle").click();
@@ -35,6 +37,7 @@ globalThis.addEventListener("load", () => {
     }
   });
 
+  // Websocket received actions
   ws.addEventListener("message", e => {
     if(is_uint16_packet(e.data)) {
       const {packet_id, uint16_value} = decode_uint16_packet(e.data);
@@ -51,6 +54,7 @@ globalThis.addEventListener("load", () => {
     }
   });
 
+  // Sound effect settings
   document.getElementById("config-se-file-in").addEventListener("input", async e => {
     const input_file = e.target.files[0];
     if(input_file) {
@@ -69,22 +73,29 @@ globalThis.addEventListener("load", () => {
     se_player.set_gain(e.target.value);
   });
 
+  // Room ID view
   document.getElementById("config-room-id").innerText = room_id;
 
+  // Participant join URL and QR view
+  const join_url = `${location.origin}/participant/${room_id}`;
   const qr_field_regular = document.getElementById("config-join-qr-field");
   new QRCode(qr_field_regular, {
-    text: `${location.origin}/participant/${room_id}`,
+    text: join_url,
     width: qr_field_regular.clientWidth,
     height: qr_field_regular.clientHeight
   });
 
   const qr_field_large = document.getElementById("large-qr-field");
   new QRCode(qr_field_large, {
-    text: `${location.origin}/participant/${room_id}`,
+    text: join_url,
     width: qr_field_large.clientWidth,
     height: qr_field_large.clientHeight
   });
 
+  document.getElementById("config-join-url").innerText = join_url;
+  document.getElementById("config-join-url").href = join_url;
+
+  // Error view
   ws.addEventListener("close", () => document.getElementById("error-view").innerText = "Connection closed by server");
   ws.addEventListener("error", () => document.getElementById("error-view").innerText = "Connection closed bu error");
 });
