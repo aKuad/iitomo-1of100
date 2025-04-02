@@ -19,21 +19,27 @@ globalThis.addEventListener("load", () => {
   const ws = new WebSocket(`/api/moderator/${room_id}`);
   ws.binaryType = "arraybuffer";
 
+  // Survey start process
+  function survey_start() {
+    if(is_in_survey) { return; /* do nothing */ }
+    is_in_survey = true;
+
+    const se_duration = document.getElementById("config-survey-duration").value;
+    const raw_packet = encode_uint16_packet(PACKET_ID_SURVEY_START, se_duration);
+    ws.send(raw_packet);
+
+    digits_3_shuffle.run();
+    se_player.play();
+  }
+  document.getElementById("config-survey-start").addEventListener("click", survey_start);
+
   // Key input process
   globalThis.addEventListener("keydown", e => {
     if(e.key === "Escape") {
       document.getElementById("config-view-toggle").click();
 
     } else if(e.key === "Enter") {
-      if(is_in_survey) { return; /* do nothing */ }
-      is_in_survey = true;
-
-      const se_duration = document.getElementById("config-survey-duration").value;
-      const raw_packet = encode_uint16_packet(PACKET_ID_SURVEY_START, se_duration);
-      ws.send(raw_packet);
-
-      digits_3_shuffle.run();
-      se_player.play();
+      survey_start();
     }
   });
 
