@@ -11,12 +11,14 @@
   </head>
 
   <body>
-    <div id="board-head"><output id="participant-count-view">100</output>人中</div>
-    <output id="board-body">888<div id="unit-view">人</div></output>
-    <div id="error-view">Error view here</div>
+    <div id="board-head"><output id="participant-count-view">0</output>人中</div>
+    <output id="board-body">!!!<div id="unit-view">人</div></output>
+    <div id="error-view"></div>
+
     <div id="config-container">
       <input type="checkbox" id="config-view-toggle" checked>
       <p id="config-header">Iitomo 1of100</p>
+      <p><button id="config-survey-start" class="input-button">Survey start</button> or press Enter key</p>
       <div class="config-item-container">
         <div>Survey duration:</div>
         <div><input type="number" id="config-survey-duration" class="input-button" value="6" min="1" max="65535">sec</div>
@@ -25,7 +27,7 @@
         <div>Sound effect:</div>
         <div>
           <div id="config-se-name"></div>
-          <input type="file" id="config-se-file-in"><label id="config-se-file-label" class="input-button" for="config-se-file-in">Set a file</label><button id="config-se-unset" class="input-button">Unset file</button>
+          <label id="config-se-file-label" class="input-button" for="config-se-file-in"><input type="file" id="config-se-file-in">Set a file</label><button id="config-se-unset" class="input-button">Unset file</button>
         </div>
       </div>
       <div class="config-item-container">
@@ -34,16 +36,18 @@
       </div>
       <div class="config-item-container">
         <div>Room ID:</div>
-        <output id="config-room-id">ID123456</output>
+        <output id="config-room-id"></output>
       </div>
       <div class="config-item-container">
         <div>Participant join QR:</div>
         <label for="large-qr-view-toggle" id="config-join-qr-field"></label>
       </div>
+      <p class="config-guide-text text-small"><a id="config-join-url" target="_blank">http</a></p>
       <p class="config-guide-text text-small">Click the QR code to view large</p>
       <p class="config-guide-text text-small">Escape key to show/hide this config</p>
       <p class="config-guide-text text-small">Source on GitHub: <a target="_blank" href="https://github.com/aKuad/iitomo-1of100">aKuad/iitomo-1og100</a></p>
     </div>
+
     <div id="large-qr-container">
       <input type="checkbox" id="large-qr-view-toggle">
       <label for="large-qr-view-toggle" id="large-qr-click-detector"></label>

@@ -124,14 +124,21 @@ body {
   color: hsl(0, 0%, 40%);
   font-style: italic;
 }
+#config-se-file-label, #config-se-unset {
+  position: relative;
+  cursor: pointer;
+}
 #config-se-file-in {
-  display: none;
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 #config-survey-duration, #config-se-file-label, #config-se-unset {
   margin: 0 0.5em 0 0;
-}
-#config-se-file-label, #config-se-unset {
-  cursor: pointer;
 }
 #config-se-volume {
   width: 10em;
