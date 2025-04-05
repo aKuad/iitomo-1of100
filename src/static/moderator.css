@@ -46,8 +46,11 @@ body {
 
 #board-body {
   height: var(--board-body-height);
-  background-color: #000;
   position: relative;
+}
+
+#board-result-view {
+  background-color: #000;
   display: block;
 
   font-family: "DSEG7Classic", sans-serif;
@@ -59,7 +62,7 @@ body {
   font-style: italic;
 }
 
-#unit-view {
+#board-unit-view {
   color: hsl(60, 100%, 40%);
   font-size: 10vh;
   font-weight: bold;
