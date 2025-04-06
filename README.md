@@ -14,6 +14,19 @@ Waratte iitomo! (everyone called it 'iitomo') is a Japanese TV program. 1of100 p
 
 If only 1 audience answered true, it success.
 
+## Deployment
+
+> [!NOTE]
+>
+> As requirements, install [Deno](https://deno.com/) at first.
+
+Just only run `src/main.ts` by Deno:
+
+```sh
+cd src
+deno run --allow-net --allow-read main.ts
+```
+
 ## Using libraries/fonts
 
 [qrcode.js](https://davidshimjs.github.io/qrcodejs/) - (c) 2012 davidshimjs
