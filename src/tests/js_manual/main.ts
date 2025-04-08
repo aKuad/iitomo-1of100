@@ -6,7 +6,7 @@
  * @author aKuad
  */
 
-import { serveDir } from "jsr:@std/http@1";
+import { serveDir, serveFile } from "jsr:@std/http@1";
 import { decode_boolean_packet, encode_boolean_packet, is_boolean_packet, PACKET_ID_MODERATOR_STATUS, PACKET_ID_SURVEY_CONTROL } from "../../static/packet/boolean.js";
 import { decode_uint16_packet, encode_uint16_packet, is_uint16_packet, PACKET_ID_PARTICIPANT_COUNT, PACKET_ID_SURVEY_RESULT, PACKET_ID_SURVEY_START } from "../../static/packet/uint16.js";
 
@@ -117,10 +117,10 @@ Deno.serve(request => {
 
   /* Pages endpoints */
   if(url.pathname.startsWith("/participant")) {
-    return new Response(Deno.readFileSync("../../pages/participant.html"), { status: 200, headers: {"content-type": "text/html"} });
+    return serveFile(request, "../../pages/participant.html");
   }
   if(url.pathname.startsWith("/moderator")) {
-    return new Response(Deno.readFileSync("../../pages/moderator.html"), { status: 200, headers: {"content-type": "text/html"} });
+    return serveFile(request, "../../pages/moderator.html");
   }
 
   return serveDir(request, { fsRoot: "./", urlRoot: ""});
