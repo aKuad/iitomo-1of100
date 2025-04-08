@@ -14,7 +14,7 @@ globalThis.addEventListener("load", () => {
   // Variables & UI objects
   const room_id = location.pathname.split("/")[2];
   const se_player = new SEPlayer();
-  const digits_3_shuffle = new Digits3Shuffle(document.getElementById("board-body"));
+  const digits_3_shuffle = new Digits3Shuffle(document.getElementById("board-result-view"));
   let is_in_survey = false;
   const ws = new WebSocket(`/api/moderator/${room_id}`);
   ws.binaryType = "arraybuffer";
@@ -54,7 +54,7 @@ globalThis.addEventListener("load", () => {
         digits_3_shuffle.stop();
         // '!' is blank segment on DSEG7 font
         // Fill '!' for under 99 value view
-        document.getElementById("board-body").innerText = `!!${uint16_value}`.slice(-3);
+        document.getElementById("board-result-view").innerText = `!!${uint16_value}`.slice(-3);
         is_in_survey = false;
       }
     }
