@@ -16,6 +16,10 @@ If only 1 audience answered true, it success.
 
 ## Deployment
 
+It's available on Deno Deploy: <https://iitomo-1of100.deno.dev/>
+
+If you wish to deploy to own server, follow the step.
+
 > [!NOTE]
 >
 > As requirements, install [Deno](https://deno.com/) at first.
