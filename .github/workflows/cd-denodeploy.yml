@@ -16,9 +16,8 @@ jobs:
       contents: read # Needed to clone the repository
 
     steps:
-    - name: Clone repository
+    - name: Source checkout
       uses: actions/checkout@v4
-
     - name: Upload to Deno Deploy
       uses: denoland/deployctl@v1
       with:
