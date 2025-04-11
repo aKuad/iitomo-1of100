@@ -152,8 +152,8 @@ body {
 #config-join-qr-field {
   display: block;
   border: solid 10px #fff;
-  width: 200px;
-  height: 200px;
+  width: 10vw;
+  height: 10vw;
   cursor: pointer;
 }
 
@@ -199,8 +199,8 @@ body {
 
 #large-qr-field {
   border: solid 30px #fff;
-  width: 800px;
-  height: 800px;
+  width: 50vh;
+  height: 50vh;
 }
 #large-qr-guide {
   font-size: 48px;
