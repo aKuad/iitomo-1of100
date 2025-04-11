@@ -1,0 +1,26 @@
+name: CD for Deno Deploy
+
+on:
+  push:
+    branches: main
+
+jobs:
+  deno-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src
+
+    permissions:
+      id-token: write # Needed for auth with Deno Deploy
+      contents: read # Needed to clone the repository
+
+    steps:
+    - name: Source checkout
+      uses: actions/checkout@v4
+    - name: Upload to Deno Deploy
+      uses: denoland/deployctl@v1
+      with:
+        project: iitomo-1of100
+        entrypoint: main.ts
+        exclude: tests/
