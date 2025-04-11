@@ -87,16 +87,20 @@ globalThis.addEventListener("load", () => {
   const qr_field_regular = document.getElementById("config-join-qr-field");
   new QRCode(qr_field_regular, {
     text: join_url,
-    width: qr_field_regular.clientWidth,
-    height: qr_field_regular.clientHeight
+    width: 1000,  // Enough resolution, no specially meaning
+    height: 1000
   });
+  qr_field_regular.getElementsByTagName("img")[0].style.width = "100%";
+  qr_field_regular.getElementsByTagName("img")[0].style.height = "100%";
 
   const qr_field_large = document.getElementById("large-qr-field");
   new QRCode(qr_field_large, {
     text: join_url,
-    width: qr_field_large.clientWidth,
-    height: qr_field_large.clientHeight
+    width: 1000,  // Enough resolution, no specially meaning
+    height: 1000
   });
+  qr_field_large.getElementsByTagName("img")[0].style.width = "100%";
+  qr_field_large.getElementsByTagName("img")[0].style.height = "100%";
 
   document.getElementById("config-join-url").innerText = join_url;
   document.getElementById("config-join-url").href = join_url;
