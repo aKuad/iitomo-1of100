@@ -1,7 +1,8 @@
 name: CD for Deno Deploy
 
 on:
-  push: # all branches for experimental
+  push:
+    branches: main
 
 jobs:
   deno-deploy:
