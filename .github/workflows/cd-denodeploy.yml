@@ -7,9 +7,6 @@ on:
 jobs:
   deno-deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: src
 
     permissions:
       id-token: write # Needed for auth with Deno Deploy
@@ -24,3 +21,4 @@ jobs:
         project: iitomo-1of100
         entrypoint: main.ts
         exclude: tests/
+        root: src
