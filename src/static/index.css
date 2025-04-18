@@ -1,16 +1,18 @@
 @charset "UTF-8";
 
-/* Input elements */
-#room-id-error {
-  color: hsl(0, 100%, 70%);
-  min-height: 1.2em;
-}
-
+/* ID input */
 #room-id-input {
   width: 8em;
   text-align: center;
 }
 
+#room-id-error {
+  color: hsl(0, 100%, 70%);
+  min-height: 1.2em;
+}
+
+
+/* Join buttons */
 #join-participant, #join-moderator {
   text-decoration: none;
   color: inherit;
@@ -19,4 +21,10 @@
   pointer-events: none;
   cursor: not-allowed;
   opacity: 0.2;
+}
+
+
+/* Guide link */
+#guide-links {
+  margin-top: 10em;
 }
