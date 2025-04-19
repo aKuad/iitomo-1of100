@@ -2,7 +2,9 @@
 
 ## 1. Moderator join
 
-Access to `/` (index): <https://iitomo-1of100.deno.dev/>
+Access to: <https://iitomo-1of100.deno.dev/>
+
+For self hosted: `http(s)://<server-address>/`
 
 ![Screen - Top page](./1-moderator-join.webp)
 
@@ -32,7 +34,9 @@ Just only scan it.
 
 ### By ID
 
-Access to `/` (index).
+Access to: <https://iitomo-1of100.deno.dev/>
+
+For self hosted: `http(s)://<server-address>/`
 
 ![Screen - Participant join by ID](./3-participant-join-id.webp)
 
