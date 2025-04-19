@@ -2,7 +2,8 @@
 
 # Deno generated files
 *coverage
-*docs
+*/**/docs
+## docs on root is allowed
 
 # Audio files (considering user ready sound effects)
 *.flac
