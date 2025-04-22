@@ -4,6 +4,10 @@
 
 Waratte iitomo! (A Japanese TV program) 1 of 100 survey system
 
+[It's available on online!](https://iitomo-1of100.deno.dev/)
+
+Usage guide is [also available on online.](https://akuad.github.io/iitomo-1of100)
+
 ![Top image](./assets/top-image.webp)
 
 ## What is 1of100?
@@ -14,13 +18,7 @@ Waratte iitomo! (everyone called it 'iitomo') is a Japanese TV program. 1of100 p
 
 If only 1 audience answered true, it success.
 
-## Usage
-
-See: <https://akuad.github.io/iitomo-1of100>
-
 ## Deployment
-
-It's available on Deno Deploy: <https://iitomo-1of100.deno.dev/>
 
 If you wish to deploy to own server, follow the step.
 
