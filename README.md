@@ -20,15 +20,14 @@ If only 1 audience answered true, it success.
 
 ## Deployment
 
-If you wish to deploy to own server, follow the step.
+If you wish to deploy to own server:
 
-> [!NOTE]
->
-> As requirements, install [Deno](https://deno.com/) at first.
-
-Just only run `src/main.ts` by Deno:
+Clone this repository, then just only run `src/main.ts` by [Deno](https://deno.com/):
 
 ```sh
+git clone --depth=1 https://github.com/aKuad/iitomo-1of100.git
+cd iitomo-1of100
+
 cd src
 deno run --allow-net --allow-read main.ts
 ```
