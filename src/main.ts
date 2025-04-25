@@ -8,6 +8,7 @@
 import { serveDir, serveFile } from "jsr:@std/http@1";
 
 import { is_only_num_alp } from "./static/util/is_only_num_alp.js";
+import { encode_boolean_packet, PACKET_ID_MODERATOR_STATUS } from "./static/packet/boolean.js";
 
 
 /* Global variables */
@@ -46,7 +47,13 @@ Deno.serve(request => {
       return new Response("Room ID is incorrect", { status: 400 });
 
     // Main process of participant
-    const { response } = Deno.upgradeWebSocket(request);
+    const { socket, response } = Deno.upgradeWebSocket(request);
+    const moderator_status_notice = () => socket.send(encode_boolean_packet(PACKET_ID_MODERATOR_STATUS, room_ids_moderator_connecting.has(room_id)));
+
+    socket.addEventListener("open", moderator_status_notice);
+    event_core.addEventListener(`moderator-update-${room_id}`, moderator_status_notice);
+    socket.addEventListener("close", () => event_core.removeEventListener(`moderator-update-${room_id}`, moderator_status_notice));
+    socket.addEventListener("error", () => event_core.removeEventListener(`moderator-update-${room_id}`, moderator_status_notice));
 
     return response;
 
@@ -66,11 +73,11 @@ Deno.serve(request => {
     const { socket, response } = Deno.upgradeWebSocket(request);
     socket.addEventListener("open", () => {
       room_ids_moderator_connecting.add(room_id);
-      event_core.dispatchEvent(new Event(`moderator-join-${room_id}`));
+      event_core.dispatchEvent(new Event(`moderator-update-${room_id}`));
     });
     const on_moderator_disconnect = () => {
       room_ids_moderator_connecting.delete(room_id);
-      event_core.dispatchEvent(new Event(`moderator-left-${room_id}`));
+      event_core.dispatchEvent(new Event(`moderator-update-${room_id}`));
     }
     socket.addEventListener("close", on_moderator_disconnect);
     socket.addEventListener("error", on_moderator_disconnect);
