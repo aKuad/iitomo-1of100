@@ -6,7 +6,7 @@
 
 Access to: <https://iitomo-1of100.deno.dev/>
 
-For self hosted: `http(s)://<server-address>/` - Source on GitHub: [aKuad/iitomo-1of100](https://github.com/aKuad/iitomo-1of100)
+For self hosted: `http(s)://<server-address>/`
 
 Input custom ID. Or empty, random generated ID will be applied.
 
