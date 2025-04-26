@@ -3,3 +3,5 @@ description: Iitomo 1of100 - usage guide
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-tactile
+github:
+  public: true
