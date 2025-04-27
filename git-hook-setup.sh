@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
 #
-# Easy setting up of commit-msg git hook
+# Easy setting up of commit-msg and pre-push git hook
 #
 # Author: aKuad
 #
 
-if [ -e .git/hooks/pre-commit ] || [ -e .git/hooks/commit-msg ]; then
-  echo "pre-commit or commit-msg hook is already exist."
+if [ -e .git/hooks/commit-msg ] || [ -e .git/hooks/pre-push ]; then
+  echo "commit-msg or pre-push hook is already exist."
   echo -n "Overwrite? [Y/n]: "
   read user_in
 
@@ -16,8 +16,8 @@ if [ -e .git/hooks/pre-commit ] || [ -e .git/hooks/commit-msg ]; then
   fi
 fi
 
-cp assets/pre-commit assets/commit-msg .git/hooks/
-chmod +x .git/hooks/pre-commit
+cp assets/commit-msg assets/pre-push .git/hooks/
 chmod +x .git/hooks/commit-msg
+chmod +x .git/hooks/pre-push
 
 echo "Hook setting up successfully."
