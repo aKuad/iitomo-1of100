@@ -4,7 +4,7 @@
  * @author aKuad
  */
 
-import { encode_boolean_packet, PACKET_ID_MODERATOR_STATUS } from "../static/packet/boolean.js";
+import { encode_boolean_packet, PACKET_ID_MODERATOR_STATUS, PACKET_ID_SURVEY_CONTROL } from "../static/packet/boolean.js";
 
 
 /**
@@ -24,6 +24,8 @@ export function ws_participant(socket: WebSocket,
 
   // Macros
   const moderator_status_notice = () => socket.send(encode_boolean_packet(PACKET_ID_MODERATOR_STATUS, room_ids_moderator_connecting.has(room_id)));
+  const survey_start_notice = () => socket.send(encode_boolean_packet(PACKET_ID_SURVEY_CONTROL, true));
+  const survey_end_notice = () => socket.send(encode_boolean_packet(PACKET_ID_SURVEY_CONTROL, false));
 
 
   // Initial communication
@@ -60,4 +62,16 @@ export function ws_participant(socket: WebSocket,
   event_core.addEventListener(`moderator-update-${room_id}`, moderator_status_notice);
   socket.addEventListener("close", () => event_core.removeEventListener(`moderator-update-${room_id}`, moderator_status_notice));
   socket.addEventListener("error", () => event_core.removeEventListener(`moderator-update-${room_id}`, moderator_status_notice));
+
+
+  // 'survey-start' signal from moderator
+  event_core.addEventListener(`survey-start-${room_id}`, survey_start_notice);
+  socket.addEventListener("close", () => event_core.removeEventListener(`survey-start-${room_id}`, survey_start_notice));
+  socket.addEventListener("error", () => event_core.removeEventListener(`survey-start-${room_id}`, survey_start_notice));
+
+
+  // 'survey-end' signal from moderator
+  event_core.addEventListener(`survey-end-${room_id}`, survey_end_notice);
+  socket.addEventListener("close", () => event_core.removeEventListener(`survey-end-${room_id}`, survey_end_notice));
+  socket.addEventListener("error", () => event_core.removeEventListener(`survey-end-${room_id}`, survey_end_notice));
 }
