@@ -24,6 +24,8 @@ export function ws_participant(socket: WebSocket,
                                participant_count: Map<string, number>,
                                participant_yes_clients: Map<string, Set<WebSocket>>) {
 
+  socket.binaryType = "arraybuffer";
+
   // Macros
   const moderator_status_notice = () => socket.send(encode_boolean_packet(PACKET_ID_MODERATOR_STATUS, room_ids_moderator_connecting.has(room_id)));
   const survey_start_notice = () => socket.send(encode_boolean_packet(PACKET_ID_SURVEY_CONTROL, true));
