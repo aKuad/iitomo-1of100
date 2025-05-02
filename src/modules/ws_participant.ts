@@ -85,9 +85,13 @@ export function ws_participant(socket: WebSocket,
 
       if(packet_id === PACKET_ID_SURVEY_RESPONSE) {
         if(boolean_value) {
+          // Set respond 'yes'
           participant_yes_clients.get(room_id)?.add(socket);
+          // Duplicated addition is no effect because of Set object specification
         } else {
+          // Unset respond 'yes'
           participant_yes_clients.get(room_id)?.delete(socket);
+          // Duplicated deletion is no effect because of Set object specification
         }
       }
     }
