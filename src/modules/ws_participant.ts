@@ -4,7 +4,7 @@
  * @author aKuad
  */
 
-import { encode_boolean_packet, PACKET_ID_MODERATOR_STATUS, PACKET_ID_SURVEY_CONTROL } from "../static/packet/boolean.js";
+import { encode_boolean_packet, decode_boolean_packet, is_boolean_packet, PACKET_ID_MODERATOR_STATUS, PACKET_ID_SURVEY_CONTROL, PACKET_ID_SURVEY_RESPONSE } from "../static/packet/boolean.js";
 
 
 /**
@@ -15,12 +15,14 @@ import { encode_boolean_packet, PACKET_ID_MODERATOR_STATUS, PACKET_ID_SURVEY_CON
  * @param event_core Event communication between moderator
  * @param room_ids_moderator_connecting Room IDs what moderator connecting
  * @param participant_count Participant count of each room ID
+ * @param participant_yes_clients Participant websocket instances what respond 'yes' of each room ID
  */
 export function ws_participant(socket: WebSocket,
                                room_id: string,
                                event_core: EventTarget,
                                room_ids_moderator_connecting: Set<string>,
-                               participant_count: Map<string, number>) {
+                               participant_count: Map<string, number>,
+                               participant_yes_clients: Map<string, Set<WebSocket>>) {
 
   // Macros
   const moderator_status_notice = () => socket.send(encode_boolean_packet(PACKET_ID_MODERATOR_STATUS, room_ids_moderator_connecting.has(room_id)));
@@ -74,4 +76,20 @@ export function ws_participant(socket: WebSocket,
   event_core.addEventListener(`survey-end-${room_id}`, survey_end_notice);
   socket.addEventListener("close", () => event_core.removeEventListener(`survey-end-${room_id}`, survey_end_notice));
   socket.addEventListener("error", () => event_core.removeEventListener(`survey-end-${room_id}`, survey_end_notice));
+
+
+  // survey-response type packet receiving process
+  socket.addEventListener("message", e => {
+    if(is_boolean_packet(e.data)) {
+      const { packet_id, boolean_value } = decode_boolean_packet(e.data);
+
+      if(packet_id === PACKET_ID_SURVEY_RESPONSE) {
+        if(boolean_value) {
+          participant_yes_clients.get(room_id)?.add(socket);
+        } else {
+          participant_yes_clients.get(room_id)?.delete(socket);
+        }
+      }
+    }
+  })
 }

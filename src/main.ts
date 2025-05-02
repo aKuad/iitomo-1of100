@@ -16,6 +16,7 @@ import { ws_moderator } from "./modules/ws_moderator.ts";
 const event_core = new EventTarget();
 const room_ids_moderator_connecting = new Set<string>();
 const participant_count = new Map<string, number>();
+const participant_yes_clients = new Map<string, Set<WebSocket>>();
 
 
 /* Server main */
@@ -50,7 +51,7 @@ Deno.serve(request => {
 
     // Main process of participant
     const { socket, response } = Deno.upgradeWebSocket(request);
-    ws_participant(socket, room_id, event_core, room_ids_moderator_connecting, participant_count);
+    ws_participant(socket, room_id, event_core, room_ids_moderator_connecting, participant_count, participant_yes_clients);
 
     return response;
 
@@ -68,7 +69,7 @@ Deno.serve(request => {
 
     // Main process of moderator
     const { socket, response } = Deno.upgradeWebSocket(request);
-    ws_moderator(socket, room_id, event_core, room_ids_moderator_connecting, participant_count);
+    ws_moderator(socket, room_id, event_core, room_ids_moderator_connecting, participant_count, participant_yes_clients);
 
     return response;
 
