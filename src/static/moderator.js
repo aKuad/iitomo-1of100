@@ -19,6 +19,8 @@ globalThis.addEventListener("load", () => {
   const ws = new WebSocket(`/api/moderator/${room_id}`);
   ws.binaryType = "arraybuffer";
 
+
+  /* Control processes */
   // Survey start process
   function survey_start() {
     if(is_in_survey) { return; /* do nothing */ }
@@ -33,6 +35,7 @@ globalThis.addEventListener("load", () => {
   }
   document.getElementById("config-survey-start").addEventListener("click", survey_start);
 
+
   // Key input process
   globalThis.addEventListener("keydown", e => {
     if(e.key === "Escape") {
@@ -42,6 +45,7 @@ globalThis.addEventListener("load", () => {
       survey_start();
     }
   });
+
 
   // Websocket received actions
   ws.addEventListener("message", e => {
@@ -60,6 +64,19 @@ globalThis.addEventListener("load", () => {
     }
   });
 
+
+  // Error view
+  ws.addEventListener("close", () => document.getElementById("error-view").innerText = "Connection closed by server");
+  ws.addEventListener("error", () => document.getElementById("error-view").innerText = "Connection closed by error");
+
+
+  globalThis.addEventListener("beforeunload", () => {
+    document.getElementById("error-view").style.display = "none"; // Error view disable for correctly disconnection
+    ws.close();
+  });
+
+
+  /* Setting processes */
   // Sound effect settings
   document.getElementById("config-se-file-in").addEventListener("input", async e => {
     const input_file = e.target.files[0];
@@ -79,8 +96,10 @@ globalThis.addEventListener("load", () => {
     se_player.set_gain(e.target.value);
   });
 
+
   // Room ID view
   document.getElementById("config-room-id").innerText = room_id;
+
 
   // Participant join URL and QR view
   const join_url = `${location.origin}/participant/${room_id}`;
@@ -104,8 +123,4 @@ globalThis.addEventListener("load", () => {
 
   document.getElementById("config-join-url").innerText = join_url;
   document.getElementById("config-join-url").href = join_url;
-
-  // Error view
-  ws.addEventListener("close", () => document.getElementById("error-view").innerText = "Connection closed by server");
-  ws.addEventListener("error", () => document.getElementById("error-view").innerText = "Connection closed bu error");
 });
