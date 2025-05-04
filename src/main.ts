@@ -26,6 +26,9 @@ Deno.serve(request => {
   /* Static files endpoint */
   if(url.pathname.startsWith("/static"))
     return serveDir(request, { fsRoot: "./static", urlRoot: "static" });
+  // favicon.ico should be on specially path
+  if(url.pathname === "/favicon.ico")
+    return serveFile(request, "./favicon.ico");
 
 
   /* Index page endpoint */
