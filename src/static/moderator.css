@@ -115,6 +115,14 @@ body {
   margin: 1em 0;
 }
 
+.config-key-guide {
+  font-family: monospace;
+  color: #fff;
+  background-color: hsl(0, 0%, 20%);
+  border-radius: 0.2em;
+  padding: 0 0.2em;
+}
+
 #config-survey-duration {
   width: 4em;
   text-align: right;
