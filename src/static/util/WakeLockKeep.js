@@ -95,7 +95,7 @@ export class WakeLockKeep {
   #wakelock_acquire() {
     if(document.visibilityState === "visible") {
       navigator.wakeLock.request("screen")
-      .then(() => console.info("WakeLock reacquired"))
+      // .then(() => console.info("WakeLock reacquired"))  // For view acquired debug message, uncomment this
       .catch(() => console.error("Failed to WakeLock reacquiring"));
     }
   }
