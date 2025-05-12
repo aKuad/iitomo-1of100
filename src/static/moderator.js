@@ -11,7 +11,7 @@ import { SEPlayer } from "./util/SEPlayer.js";
 
 
 globalThis.addEventListener("load", () => {
-  // Variables & UI objects
+  /* Variables & UI objects */
   const room_id = location.pathname.split("/")[2];
   const se_player = new SEPlayer();
   const digits_3_shuffle = new Digits3Shuffle(document.getElementById("board-result-view"));
@@ -20,7 +20,7 @@ globalThis.addEventListener("load", () => {
   ws.binaryType = "arraybuffer";
 
 
-  /* Control processes */
+  /* Main control processes */
   // Survey start process
   function survey_start() {
     if(is_in_survey) { return; /* do nothing */ }
@@ -36,14 +36,10 @@ globalThis.addEventListener("load", () => {
   document.getElementById("config-survey-start").addEventListener("click", survey_start);
 
 
-  // Key input process
+  // Survey start by key input
   globalThis.addEventListener("keydown", e => {
-    if(e.key === "Escape") {
-      document.getElementById("config-view-toggle").click();
-
-    } else if(e.key === "Enter") {
+    if(e.key === "Enter")
       survey_start();
-    }
   });
 
 
@@ -70,13 +66,34 @@ globalThis.addEventListener("load", () => {
   ws.addEventListener("error", () => document.getElementById("error-view").innerText = "Connection closed by error");
 
 
+  // On page leave
   globalThis.addEventListener("beforeunload", () => {
     document.getElementById("error-view").style.display = "none"; // Error view disable for correctly disconnection
     ws.close();
   });
 
 
-  /* Setting processes */
+  /* Config view/hide process */
+  // By screen button
+  document.getElementById("config-view-toggle-show").addEventListener("click", e => {
+    document.getElementById("config-view-toggle").checked = true;
+    document.getElementById("config-view-toggle-show").style.opacity = 0.0;
+  });
+  document.getElementById("config-view-toggle-hide").addEventListener("click", () => {
+    document.getElementById("config-view-toggle").checked = false;
+    document.getElementById("config-view-toggle-show").style.opacity = "";  // Unset inline style
+  });
+
+  // By key input
+  globalThis.addEventListener("keydown", e => {
+    if(e.key === "Escape") {
+      document.getElementById("config-view-toggle").click();
+      document.getElementById("config-view-toggle-show").style.opacity = 0.0; // By key control, hide config show button
+    }
+  });
+
+
+  /* Config processes */
   // Sound effect settings
   document.getElementById("config-se-file-in").addEventListener("input", async e => {
     const input_file = e.target.files[0];
