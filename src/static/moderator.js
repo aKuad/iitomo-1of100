@@ -8,6 +8,7 @@ import { decode_uint16_packet, is_uint16_packet, PACKET_ID_PARTICIPANT_COUNT, PA
 import { Digits3Shuffle } from "./util/Digits3Shuffle.js";
 import { encode_uint16_packet, PACKET_ID_SURVEY_START } from "./packet/uint16.js";
 import { SEPlayer } from "./util/SEPlayer.js";
+import { WakeLockKeep } from "./util/WakeLockKeep.js";
 
 
 globalThis.addEventListener("load", () => {
@@ -94,6 +95,21 @@ globalThis.addEventListener("load", () => {
 
   document.getElementById("config-se-volume").addEventListener("input", e => {
     se_player.set_gain(e.target.value);
+  });
+
+
+  // WakeLock
+  const wake_lock_keep = new WakeLockKeep();
+  if(!wake_lock_keep.is_wakelock_available) {
+    document.getElementById("config-wakelock-enable").style.display = "none";
+    document.getElementById("config-wakelock-unsupported-mes").style.display = "";
+  }
+
+  document.getElementById("config-wakelock-enable").addEventListener("input", e => {
+    if(e.target.checked)
+      wake_lock_keep.enable();
+    else
+      wake_lock_keep.disable();
   });
 
 
