@@ -75,7 +75,7 @@ globalThis.addEventListener("load", () => {
 
   /* Config view/hide process */
   // By screen button
-  document.getElementById("config-view-toggle-show").addEventListener("click", e => {
+  document.getElementById("config-view-toggle-show").addEventListener("click", () => {
     document.getElementById("config-view-toggle").checked = true;
     document.getElementById("config-view-toggle-show").style.opacity = 0.0;
   });
