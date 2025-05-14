@@ -5,15 +5,21 @@
  */
 
 import { is_boolean_packet, decode_boolean_packet, encode_boolean_packet, PACKET_ID_SURVEY_CONTROL, PACKET_ID_SURVEY_RESPONSE, PACKET_ID_MODERATOR_STATUS } from "./packet/boolean.js";
+import { WakeLockKeep } from "./util/WakeLockKeep.js";
 
 
 globalThis.addEventListener("load", () => {
+  /* UI initial */
   const room_id = location.pathname.split("/")[2];
   document.getElementById("room-id-view").innerText = room_id;
 
+
+  /* Variables */
   const ws = new WebSocket(`/api/participant/${room_id}`);
   ws.binaryType = "arraybuffer";
 
+
+  /* UI control by server signal */
   ws.addEventListener("message", e => {
     if(is_boolean_packet(e.data)) {
       const { packet_id, boolean_value } = decode_boolean_packet(e.data);
@@ -50,8 +56,25 @@ globalThis.addEventListener("load", () => {
   ws.addEventListener("close", () => document.getElementById("error-view").innerText = "Connection closed by server");
   ws.addEventListener("error", () => document.getElementById("error-view").innerText = "Connection closed bu error");
 
+
+  /* Response process */
   document.getElementById("response-input").addEventListener("input", e => {
     if(ws.readyState !== ws.OPEN) return; // When connection unavailable, do nothing
     ws.send(encode_boolean_packet(PACKET_ID_SURVEY_RESPONSE, e.target.checked));
+  });
+
+
+  /* WakeLock control */
+  const wake_lock_keep = new WakeLockKeep();
+  if(!wake_lock_keep.is_wakelock_available) {
+    document.getElementById("wakelock-enable").disabled = true;
+    document.getElementById("wakelock-enable-label").innerText += "\r(Unsupported)";
+  }
+
+  document.getElementById("config-wakelock-enable").addEventListener("input", e => {
+    if(e.target.checked)
+      wake_lock_keep.enable();
+    else
+      wake_lock_keep.disable();
   });
 });
