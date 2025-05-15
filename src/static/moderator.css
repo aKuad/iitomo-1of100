@@ -4,6 +4,8 @@
 :root {
   --board-head-height: 30vh;
   --board-body-height: 70vh;
+
+  --config-view-toggle-size: 3rem;
 }
 
 html {
@@ -72,6 +74,59 @@ body {
   position: absolute;
   right: 0.2em;
   bottom: 0.2em;
+}
+
+
+/* Config show/hide button elements */
+#config-view-toggle-show, #config-view-toggle-hide {
+  top: 1rem;
+  right: 1rem;
+  width: var(--config-view-toggle-size);
+  height: var(--config-view-toggle-size);
+
+  /* Disable <button> original style */
+  font-size: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+#config-view-toggle-show:hover, #config-view-toggle-hide:hover {
+  opacity: 0.4;
+}
+
+#config-view-toggle-show {
+  position: fixed;
+}
+#config-view-toggle-show > hr {
+  border: none;
+  border-bottom: 4px solid hsl(0, 0%, 40%);
+  margin: 0;
+  margin-bottom: calc((var(--config-view-toggle-size) - 12px) / 2); /* 12px for border width 4px * 4 */
+}
+
+#config-view-toggle-hide {
+  position: absolute;
+}
+#config-view-toggle-hide::before, #config-view-toggle-hide::after {
+  position: absolute;
+  top: calc(var(--config-view-toggle-size) / 2 - 1px);
+  left: calc((-1 * var(--config-view-toggle-size) * 1.4 / 2) + (var(--config-view-toggle-size) / 2));  /* (move to left edge) + (move to center) */
+
+  display: block;
+  width: calc(var(--config-view-toggle-size) * 1.4);   /* 1.4 as sqrt(2) */
+  border-bottom: 4px solid hsl(0, 0%, 40%);
+
+  content: "";
+}
+#config-view-toggle-hide::before {
+  transform: rotate(45deg);
+}
+#config-view-toggle-hide::after {
+  transform: rotate(-45deg);
 }
 
 
