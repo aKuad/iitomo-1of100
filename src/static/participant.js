@@ -71,7 +71,7 @@ globalThis.addEventListener("load", () => {
     document.getElementById("wakelock-enable-label").innerText += "\r(Unsupported)";
   }
 
-  document.getElementById("config-wakelock-enable").addEventListener("input", e => {
+  document.getElementById("wakelock-enable").addEventListener("input", e => {
     if(e.target.checked)
       wake_lock_keep.enable();
     else
