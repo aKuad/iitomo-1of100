@@ -46,6 +46,11 @@
         <div><input type="range" id="config-se-volume" value="1" min="0" max="3" step="any"></div>
       </div>
       <div class="config-item-container">
+        <label for="config-wakelock-enable">Keep display ON:</label>
+        <input type="checkbox" id="config-wakelock-enable">
+        <div id="config-wakelock-unsupported-mes" style="display: none;">Unsupported on this device</div>
+      </div>
+      <div class="config-item-container">
         <div>Room ID:</div>
         <output id="config-room-id"></output>
       </div>

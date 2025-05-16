@@ -209,6 +209,14 @@ body {
 #config-se-volume {
   width: 10em;
 }
+#config-wakelock-enable {
+  width: 2em;
+  height: 2em;
+}
+#config-wakelock-unsupported-mes {
+  color: hsl(0, 0%, 50%);
+  font-style: italic;
+}
 #config-room-id {
   display: block;
 }

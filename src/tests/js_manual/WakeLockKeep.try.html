@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <script type="module">
+      /**
+       * Test for `WakeLockKeep.js`
+       *
+       * Test steps:
+       *   1. Execute `main.js` (in same directory) with Deno - `deno run --allow-net --allow-read main.js`
+       *   2. Access to `http://localhost:8000/WakeLockKeep.try.html` with browser
+       *   3. Open JavaScript console
+       *   4. Click test control buttons
+       *   5. Check display view or console
+       *
+       * Test cases:
+       *   - Can keep not be screen turned off, system slept or system locked
+       *   - Can continue wake lock even if document been re-visible (after hide)
+       *   - Can turn ON/OFF wakelock
+       *   - Can indicate WakeLock API is available
+       *
+       * @author aKuad
+       */
+
+      import { WakeLockKeep } from "/static/util/WakeLockKeep.js";
+
+
+      window.addEventListener("load", () => {
+        const wake_lock_keep = new WakeLockKeep();
+        if(!wake_lock_keep.is_wakelock_available) {
+          document.getElementById("wake-lock-toggle").disabled = true;
+          document.getElementById("wake-lock-toggle-label").innerText = "WakeLock API unsupported environment";
+          return; // Skip input event addition process
+        }
+
+        document.getElementById("wake-lock-toggle").addEventListener("input", e => {
+          if(e.target.checked) {
+            wake_lock_keep.enable();
+            console.log("-- CHECK - Is WakeLock (not be screen turned off, system slept or system locked) kept?");
+          } else {
+            wake_lock_keep.disable();
+            console.log("-- CHECK - Is WakeLock (not be screen turned off, system slept or system locked) keeping released?");
+          }
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <p>
+      <input id="wake-lock-toggle" type="checkbox"><label id="wake-lock-toggle-label" for="wake-lock-toggle">WakeLock enable</label>
+    </p>
+  </body>
+</html>
