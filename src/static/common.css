@@ -26,13 +26,13 @@ header {
   font-weight: bold;
   border-bottom: solid hsl(0, 0%, 80%) 2px;
 
-  width: 100vw;
+  width: 100%;
   box-sizing: border-box;
   padding: 0.2em;
 }
 
 .centering {
-  width: 100vw;
+  width: 100%;
   flex-grow: 1; /* for set height to remaining space (is 100vh - <header height>) */
 
   display: flex;
