@@ -54,7 +54,7 @@ globalThis.addEventListener("load", () => {
   });
 
   ws.addEventListener("close", () => document.getElementById("error-view").innerText = "Connection closed by server");
-  ws.addEventListener("error", () => document.getElementById("error-view").innerText = "Connection closed bu error");
+  ws.addEventListener("error", () => document.getElementById("error-view").innerText = "Connection closed by error");
 
 
   /* Response process */
