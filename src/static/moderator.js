@@ -4,9 +4,8 @@
  * @author aKuad
  */
 
-import { decode_uint16_packet, is_uint16_packet, PACKET_ID_PARTICIPANT_COUNT, PACKET_ID_SURVEY_RESULT } from "./packet/uint16.js";
+import { encode_uint16_packet, decode_uint16_packet, is_uint16_packet, PACKET_ID_PARTICIPANT_COUNT, PACKET_ID_SURVEY_START, PACKET_ID_SURVEY_RESULT } from "./packet/uint16.js";
 import { Digits3Shuffle } from "./util/Digits3Shuffle.js";
-import { encode_uint16_packet, PACKET_ID_SURVEY_START } from "./packet/uint16.js";
 import { SEPlayer } from "./util/SEPlayer.js";
 import { WakeLockKeep } from "./util/WakeLockKeep.js";
 
