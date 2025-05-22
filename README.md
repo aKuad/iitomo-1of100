@@ -34,9 +34,9 @@ deno run --allow-net --allow-read main.ts
 
 ## Using libraries/fonts
 
-[qrcode.js](https://davidshimjs.github.io/qrcodejs/) - (c) 2012 davidshimjs
+[qrcode.js](https://davidshimjs.github.io/qrcodejs/) - (c) 2012 [davidshimjs](https://github.com/davidshimjs)
 
-[DSEG](https://www.keshikan.net/fonts-e.html) - (c) 2017, keshikan (<http://www.keshikan.net>)
+[DSEG](https://www.keshikan.net/fonts-e.html) - (c) 2017 [keshikan](http://www.keshikan.net)
 
 ## License
 
