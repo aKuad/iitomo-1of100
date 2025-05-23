@@ -33,7 +33,7 @@ Deno.serve(request => {
 
   /* Index page endpoint */
   if(url.pathname === "/")
-    return serveFile(request, "./pages/index.html");
+    return serveFile(request, "./pages/en/index.html");
 
 
   /* Room ID checking */
@@ -84,14 +84,14 @@ Deno.serve(request => {
 
   /* Pages (other of index) endpoints */
   if       (url.pathname.startsWith("/participant")) {
-    return serveFile(request, "./pages/participant.html");
+    return serveFile(request, "./pages/en/participant.html");
 
   } else if(url.pathname.startsWith("/moderator")) {
     if(room_ids_moderator_connecting.has(room_id))
-      return serveFile(request, "./pages/moderator-dup.html");
+      return serveFile(request, "./pages/en/moderator-dup.html");
     else
-      return serveFile(request, "./pages/moderator.html");
+      return serveFile(request, "./pages/en/moderator.html");
   }
 
-  return new Response(Deno.readFileSync("./pages/404-not-found.html"), { status: 404, headers: {"content-type": "text/html"} });
+  return new Response(Deno.readFileSync("./pages/en/404-not-found.html"), { status: 404, headers: {"content-type": "text/html"} });
 });
