@@ -34,14 +34,14 @@ deno run --allow-net --allow-read main.ts
 
 ## Using libraries/fonts
 
-[qrcode.js](https://davidshimjs.github.io/qrcodejs/) - (c) 2012 [davidshimjs](https://github.com/davidshimjs)
+[QRCode.js](https://davidshimjs.github.io/qrcodejs/) - (c) 2012 [davidshimjs](https://github.com/davidshimjs)
 
 [DSEG](https://www.keshikan.net/fonts-e.html) - (c) 2017 [keshikan](http://www.keshikan.net)
 
 ## License
 
-QRCode.js - MIT License
+Iitomo 1of100 - [CC0](./LICENSE#iitomo-1of100)
 
-DSEG - SIL OPEN FONT LICENSE
+QRCode.js - [MIT License](./LICENSE#qrcodejs)
 
-Other of them - CC0
+DSEG - [SIL OPEN FONT LICENSE](./LICENSE#dseg)
