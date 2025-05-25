@@ -40,8 +40,8 @@ deno run --allow-net --allow-read main.ts
 
 ## License
 
-Iitomo 1of100 - [CC0](./LICENSE#iitomo-1of100)
+Iitomo 1of100 - [CC0](./LICENSE.md#iitomo-1of100)
 
-QRCode.js - [MIT License](./LICENSE#qrcodejs)
+QRCode.js - [MIT License](./LICENSE.md#qrcodejs)
 
-DSEG - [SIL OPEN FONT LICENSE](./LICENSE#dseg)
+DSEG - [SIL OPEN FONT LICENSE](./LICENSE.md#dseg)
