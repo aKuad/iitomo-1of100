@@ -17,6 +17,7 @@ const event_core = new EventTarget();
 const room_ids_moderator_connecting = new Set<string>();
 const participant_count = new Map<string, number>();
 const participant_yes_clients = new Map<string, Set<WebSocket>>();
+const SUPPORTED_LANGS = ["ja", "en"];
 
 
 /* Server main */
@@ -29,11 +30,6 @@ Deno.serve(request => {
   // favicon.ico should be on specially path
   if(url.pathname === "/favicon.ico")
     return serveFile(request, "./favicon.ico");
-
-
-  /* Index page endpoint */
-  if(url.pathname === "/")
-    return serveFile(request, "./pages/en/index.html");
 
 
   /* Room ID checking */
@@ -82,16 +78,39 @@ Deno.serve(request => {
   }
 
 
-  /* Pages (other of index) endpoints */
-  if       (url.pathname.startsWith("/participant")) {
-    return serveFile(request, "./pages/en/participant.html");
+  /* Check lang select on URL - Redirect when no lang specified URL */
+  const page_lang = url.pathname.split("/")[1]; // URL structure is '/<lang>/<page_path>' ... [1] means <lang>
+  const page_path = url.pathname.split("/").slice(2).join("/");
 
-  } else if(url.pathname.startsWith("/moderator")) {
-    if(room_ids_moderator_connecting.has(room_id))
-      return serveFile(request, "./pages/en/moderator-dup.html");
+  if(!SUPPORTED_LANGS.includes(page_lang)) {
+    const browser_first_lang = request.headers.get("accept-language")?.split(",")[0] || "en";  // "en" as default lang
+    const new_url = new URL(url);
+
+    if(browser_first_lang === "ja")
+      new_url.pathname = "/ja" + new_url.pathname;
     else
-      return serveFile(request, "./pages/en/moderator.html");
+      new_url.pathname = "/en" + new_url.pathname;
+    console.log(new_url);
+
+    return new Response(null, { status: 303, headers: new Headers({ location: new_url.href })});
   }
 
-  return new Response(Deno.readFileSync("./pages/en/404-not-found.html"), { status: 404, headers: {"content-type": "text/html"} });
+
+  /* Index page endpoint */
+  if(page_path === "")  // index
+    return serveFile(request, `./pages/${page_lang}/index.html`);
+
+
+  /* Pages (other of index) endpoints */
+  if       (page_path.startsWith("participant")) {
+    return serveFile(request, `./pages/${page_lang}/participant.html`);
+
+  } else if(page_path.startsWith("moderator")) {
+    if(room_ids_moderator_connecting.has(room_id))
+      return serveFile(request, `./pages/${page_lang}/moderator-dup.html`);
+    else
+      return serveFile(request, `./pages/${page_lang}/moderator.html`);
+  }
+
+  return new Response(Deno.readFileSync(`./pages/${page_lang}/404-not-found.html`), { status: 404, headers: {"content-type": "text/html"} });
 });
