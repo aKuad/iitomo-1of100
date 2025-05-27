@@ -10,7 +10,7 @@ import { WakeLockKeep } from "./util/WakeLockKeep.js";
 
 globalThis.addEventListener("load", () => {
   /* UI initial */
-  const room_id = location.pathname.split("/")[2];
+  const room_id = location.pathname.split("/")[3];
   document.getElementById("room-id-view").innerText = room_id;
 
 
