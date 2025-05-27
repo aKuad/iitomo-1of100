@@ -83,7 +83,10 @@ Deno.serve(request => {
   const page_path = url.pathname.split("/").slice(2).join("/");
 
   if(!SUPPORTED_LANGS.includes(page_lang)) {
-    const browser_first_lang = request.headers.get("accept-language")?.split(",")[0] || "en";  // "en" as default lang
+    const browser_first_lang = request.headers.get("accept-language")?.replace(/(-|,|;).*/, "") || "en";  // "en" as default lang
+    // Replace after '-' -> remove country code
+    //               ',' -> remove second and later language code
+    //               ';' -> remove q-factor weighting
     const new_url = new URL(url);
 
     if(browser_first_lang === "ja")
