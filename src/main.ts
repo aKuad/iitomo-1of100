@@ -93,7 +93,6 @@ Deno.serve(request => {
       new_url.pathname = "/ja" + new_url.pathname;
     else
       new_url.pathname = "/en" + new_url.pathname;
-    console.log(new_url);
 
     return new Response(null, { status: 303, headers: new Headers({ location: new_url.href })});
   }
