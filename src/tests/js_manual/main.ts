@@ -116,12 +116,17 @@ Deno.serve(request => {
 
 
   /* Pages endpoints */
-  if(url.pathname.startsWith("/participant")) {
+  if     (url.pathname.startsWith("/en/participant"))
     return serveFile(request, "../../pages/en/participant.html");
-  }
-  if(url.pathname.startsWith("/moderator")) {
+
+  else if(url.pathname.startsWith("/ja/participant"))
+    return serveFile(request, "../../pages/ja/participant.html");
+
+  else if(url.pathname.startsWith("/en/moderator"))
     return serveFile(request, "../../pages/en/moderator.html");
-  }
+
+  else if(url.pathname.startsWith("/ja/moderator"))
+    return serveFile(request, "../../pages/ja/moderator.html");
 
   return serveDir(request, { fsRoot: "./", urlRoot: ""});
 });
