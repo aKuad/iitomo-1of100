@@ -21,8 +21,8 @@ globalThis.addEventListener("load", () => {
 
     const {is_correct, incorrect_reason} = is_only_num_alp(room_id);
     if(is_correct) {
-      document.getElementById("join-participant").href = `/participant/${room_id}`;
-      document.getElementById("join-moderator").href = `/moderator/${room_id}`;
+      document.getElementById("join-participant").href = `/${page_lang}/participant/${room_id}`;
+      document.getElementById("join-moderator").href = `/${page_lang}/moderator/${room_id}`;
       document.getElementById("join-participant").classList.remove("link-disabled");
       document.getElementById("join-moderator").classList.remove("link-disabled");
       document.getElementById("room-id-error").innerText = "";
