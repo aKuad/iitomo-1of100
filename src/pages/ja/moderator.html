@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
     <meta property="og:title" content="Iitomo 1of100">
-    <meta property="og:description" content="Waratte iitomo! (A Japanese TV program) 1 of 100 survey system">
+    <meta property="og:description" content="笑っていいとも！ 100人中1人アンケートシステム">
     <meta property="og:image" content="/static/og-image.png">
     <link rel="stylesheet" href="/static/common.css">
     <link rel="stylesheet" href="/static/moderator.css">
     <script type="text/javascript" src="/static/util/qrcode.min.js"></script>
     <script type="module" src="/static/moderator.js"></script>
-    <title>Moderator - Iitomo 1of100</title>
+    <style>
+      #config-se-name:empty::before {
+        content: "ファイル未指定";
+      }
+    </style>
+    <title>司会者 - Iitomo 1of100</title>
   </head>
 
   <body>
@@ -29,46 +34,46 @@
       <button id="config-view-toggle-hide"></button>
 
       <p id="config-header">Iitomo 1of100</p>
-      <p><button id="config-survey-start" class="input-button">Survey start</button> or press <span class="config-key-guide">Enter</span> key</p>
+      <p><button id="config-survey-start" class="input-button">アンケート開始</button> または <span class="config-key-guide">Enter</span> キーを押す</p>
       <div class="config-item-container">
-        <label for="config-survey-duration">Survey duration:</label>
-        <div><input type="number" id="config-survey-duration" class="input-button" value="6" min="1" max="65535">sec</div>
+        <label for="config-survey-duration">アンケート受付時間:</label>
+        <div><input type="number" id="config-survey-duration" class="input-button" value="6" min="1" max="65535">秒</div>
       </div>
       <div class="config-item-container">
-        <div>Sound effect:</div>
+        <div>効果音:</div>
         <div>
           <div id="config-se-name"></div>
-          <label id="config-se-file-label" class="input-button" for="config-se-file-in"><input type="file" id="config-se-file-in">Set a file</label><button id="config-se-unset" class="input-button">Unset file</button>
+          <label id="config-se-file-label" class="input-button" for="config-se-file-in"><input type="file" id="config-se-file-in">ファイルをセット</label><button id="config-se-unset" class="input-button">ファイルを除去</button>
         </div>
       </div>
       <div class="config-item-container">
-        <label for="config-se-volume">Sound effect volume:</label>
+        <label for="config-se-volume">効果音音量:</label>
         <div><input type="range" id="config-se-volume" value="1" min="0" max="3" step="any"></div>
       </div>
       <div class="config-item-container">
-        <label for="config-wakelock-enable">Keep display ON:</label>
+        <label for="config-wakelock-enable">自動スリープを抑止:</label>
         <input type="checkbox" id="config-wakelock-enable">
-        <div id="config-wakelock-unsupported-mes" style="display: none;">Unsupported on this device</div>
+        <div id="config-wakelock-unsupported-mes" style="display: none;">このデバイスでは未サポート</div>
       </div>
       <div class="config-item-container">
-        <div>Room ID:</div>
+        <div>ルーム ID:</div>
         <output id="config-room-id"></output>
       </div>
       <div class="config-item-container">
-        <div>Participant join QR:</div>
+        <div>回答者参加 QR:</div>
         <label for="large-qr-view-toggle" id="config-join-qr-field"></label>
       </div>
       <p class="config-guide-text text-small"><a id="config-join-url" target="_blank">http</a></p>
-      <p class="config-guide-text text-small">Click the QR code to view large</p>
-      <p class="config-guide-text text-small"><span class="config-key-guide">Esc</span> key to show/hide this config</p>
-      <p class="config-guide-text text-small">Source on GitHub: <a target="_blank" href="https://github.com/aKuad/iitomo-1of100">aKuad/iitomo-1of100</a></p>
+      <p class="config-guide-text text-small">QR をクリックして大きく表示</p>
+      <p class="config-guide-text text-small"><span class="config-key-guide">Esc</span> キーでこのコンフィグを表示/非表示</p>
+      <p class="config-guide-text text-small">ソースコード on GitHub: <a target="_blank" href="https://github.com/aKuad/iitomo-1of100">aKuad/iitomo-1of100</a></p>
     </div>
 
     <div id="large-qr-container">
       <input type="checkbox" id="large-qr-view-toggle">
       <label for="large-qr-view-toggle" id="large-qr-click-detector"></label>
       <div id="large-qr-field"></div>
-      <p id="large-qr-guide">Click screen to close large view</p>
+      <p id="large-qr-guide">クリックして表示を閉じる</p>
     </div>
   </body>
 </html>

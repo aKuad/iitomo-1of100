@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <meta property="og:title" content="Iitomo 1of100">
+    <meta property="og:description" content="笑っていいとも！ 100人中1人アンケートシステム">
+    <meta property="og:image" content="/static/og-image.png">
+    <link rel="stylesheet" href="/static/common.css">
+    <script>
+      window.addEventListener("load", () => {
+        const room_id = location.pathname.split("/")[2];
+        document.getElementById("current-id-view").innerText = room_id;
+      });
+    </script>
+    <title>このルーム ID は使用中です - Iitomo 1of100</title>
+  </head>
+
+  <body>
+    <header>Iitomo 1of100</header>
+    <div class="centering">
+      <div class="text-large">このルーム ID は使用中です</div>
+      <div class="text-small">ルーム ID: <span id="current-id-view"></span></div>
+      <div class="text-normal"><a href="/ja">トップへ戻る</a></div>
+    </div>
+  </body>
+</html>
