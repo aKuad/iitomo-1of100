@@ -134,7 +134,7 @@ globalThis.addEventListener("load", () => {
 
 
   // Participant join URL and QR view
-  const join_url = location.href.replace("moderator", "participant");
+  const join_url = `${location.origin}/participant/${room_id}`;
   const qr_field_regular = document.getElementById("config-join-qr-field");
   new QRCode(qr_field_regular, {
     text: join_url,
