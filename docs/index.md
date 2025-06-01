@@ -1,5 +1,7 @@
 # Usage
 
+English | [日本語](./ja.html)
+
 ## 1. Moderator setup
 
 ### 1.1. Moderator join
