@@ -12,7 +12,7 @@ import { WakeLockKeep } from "./util/WakeLockKeep.js";
 
 globalThis.addEventListener("load", () => {
   /* Variables & UI objects */
-  const room_id = location.pathname.split("/")[2];
+  const room_id = location.pathname.split("/")[3];
   const se_player = new SEPlayer();
   const digits_3_shuffle = new Digits3Shuffle(document.getElementById("board-result-view"));
   let is_in_survey = false;

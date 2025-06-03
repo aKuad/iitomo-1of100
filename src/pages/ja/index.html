@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="笑っていいとも！ 100人中1人アンケートシステム">
+    <meta name="keywords" content="笑っていいとも,いいとも,100人中1人,waratte,iitomo,1of100">
+    <meta property="og:title" content="Iitomo 1of100">
+    <meta property="og:url" content="https://iitomo-1of100.deno.dev/">
+    <meta property="og:description" content="笑っていいとも！ 100人中1人アンケートシステム">
+    <meta property="og:image" content="/static/og-image.png">
+    <link rel="stylesheet" href="/static/common.css">
+    <link rel="stylesheet" href="/static/index.css">
+    <script type="module" src="/static/index.js"></script>
+    <title>Iitomo 1of100</title>
+  </head>
+
+  <body>
+    <header>Iitomo 1of100</header>
+    <div class="centering">
+      <div class="text-large">ルーム ID</div>
+      <input id="room-id-input" class="input-button" type="text">
+      <div id="room-id-error" class="text-normal"></div>
+
+      <div class="text-large">ルームに接続する</div>
+      <div>
+        <a id="join-participant" class="input-button">回答者</a>
+        <a id="join-moderator"   class="input-button">司会者</a>
+      </div>
+
+      <div id="guide-links" class="text-normal">ガイド: <a href="https://akuad.github.io/iitomo-1of100/ja.html" target="_blank">使い方</a> | <a href="https://github.com/aKuad/iitomo-1of100" target="_blank">ソースコード</a></div>
+      <div id="lang-switch" class="text-normal"><a href="/en">English</a> | 日本語</div>
+    </div>
+  </body>
+</html>
