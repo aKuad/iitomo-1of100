@@ -2,6 +2,8 @@
 
 [![Version](https://img.shields.io/github/v/release/aKuad/iitomo-1of100)](https://github.com/aKuad/iitomo-1of100/releases)
 
+[English](./README.md) | 日本語
+
 笑っていいとも!100人中1人アンケートシステム
 
 [オンラインで利用可能です！](https://iitomo-1of100.deno.dev/)
