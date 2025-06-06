@@ -33,8 +33,7 @@ Deno.serve(request => {
 
 
   /* Room ID checking */
-  const is_api_access = url.pathname.startsWith("/api");
-  const room_id = is_api_access ? url.pathname.split("/")[3] : url.pathname.split("/")[2];
+  const room_id = url.pathname.split("/")[3];
   const is_room_id_correct = Boolean(room_id) && is_only_num_alp(room_id).is_correct; // If room_id is undefined or empty string, it be false
 
 
@@ -105,10 +104,15 @@ Deno.serve(request => {
 
   /* Pages (other of index) endpoints */
   if       (page_path.startsWith("participant")) {
-    return serveFile(request, `./pages/${page_lang}/participant.html`);
+    if(!is_room_id_correct)
+      return serveFile(request, `./pages/${page_lang}/incorrect-id.html`);
+    else
+      return serveFile(request, `./pages/${page_lang}/participant.html`);
 
   } else if(page_path.startsWith("moderator")) {
-    if(room_ids_moderator_connecting.has(room_id))
+    if     (!is_room_id_correct)
+      return serveFile(request, `./pages/${page_lang}/incorrect-id.html`);
+    else if(room_ids_moderator_connecting.has(room_id))
       return serveFile(request, `./pages/${page_lang}/moderator-dup.html`);
     else
       return serveFile(request, `./pages/${page_lang}/moderator.html`);
