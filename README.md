@@ -2,13 +2,15 @@
 
 [![Version](https://img.shields.io/github/v/release/aKuad/iitomo-1of100)](https://github.com/aKuad/iitomo-1of100/releases)
 
+English | [日本語](./README_ja.md)
+
 Waratte iitomo! (A Japanese TV program) 1 of 100 survey system
 
 [It's available on online!](https://iitomo-1of100.deno.dev/)
 
 Usage guide is [also available on online.](https://akuad.github.io/iitomo-1of100)
 
-![Top image](./assets/top-image.webp)
+![Top image](./assets/top-image-en.webp)
 
 ## What is 1of100?
 
