@@ -30,7 +30,12 @@ body {
 }
 
 a {
-  color: hsl(240, 100%, 70%);
+  color: hsl(240, 100%, 60%);
+}
+@media (prefers-color-scheme: dark) {
+  a {
+    color: hsl(240, 100%, 80%);
+  }
 }
 
 /* Outline elements */
