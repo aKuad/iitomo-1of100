@@ -6,6 +6,13 @@
   --board-body-height: 70vh;
 
   --config-view-toggle-size: 3rem;
+
+  --back-color-tra: hsla(0, 0%, 90%, 0.9);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --back-color-tra: hsla(0, 0%, 10%, 0.9);
+  }
 }
 
 html {
@@ -137,10 +144,8 @@ body {
   box-sizing: border-box;
   overflow-x: scroll;
   padding: 5em;
-  background-color: hsla(0, 0%, 90%, 0.9);
+  background-color: var(--back-color-tra);
   border-left: solid 2px hsl(0, 0%, 50%);
-
-  color: #000;
 
   position: fixed;
   top: 0;
@@ -172,8 +177,8 @@ body {
 
 .config-key-guide {
   font-family: monospace;
-  color: #fff;
-  background-color: hsl(0, 0%, 20%);
+  color: var(--back-color);
+  background-color: var(--text-color);
   border-radius: 0.2em;
   padding: 0 0.2em;
 }
@@ -187,7 +192,7 @@ body {
 }
 #config-se-name:empty::before {
   content: "No file set";
-  color: hsl(0, 0%, 40%);
+  color: hsl(0, 0%, 50%);
   font-style: italic;
 }
 #config-se-file-label, #config-se-unset {
@@ -237,7 +242,7 @@ body {
 #large-qr-container {
   width: 100vw;
   height: 100vh;
-  background-color: hsla(0, 0%, 90%, 0.9);
+  background-color: var(--back-color-tra);
   border-top: solid 2px hsl(0, 0%, 50%);
 
   position: fixed;
@@ -275,7 +280,7 @@ body {
 }
 #large-qr-guide {
   font-size: 48px;
-  color: #000;
+  color: var(--text-color);
 }
 
 
