@@ -20,7 +20,12 @@
     <div class="centering">
       <div class="text-large">Room ID</div>
       <input id="room-id-input" class="input-button" type="text">
-      <div id="room-id-error" class="text-normal"></div>
+      <div id="room-id-error" class="text-normal">
+        <div class="room-id-error-text"><input type="radio" name="room-id-error-select" class="room-id-error-select"></div>
+        <div class="room-id-error-text"><input type="radio" name="room-id-error-select" class="room-id-error-select">Non-ascii character including</div>
+        <div class="room-id-error-text"><input type="radio" name="room-id-error-select" class="room-id-error-select">Ascii space including</div>
+        <div class="room-id-error-text"><input type="radio" name="room-id-error-select" class="room-id-error-select">Ascii symbol including</div>
+      </div>
 
       <div class="text-large">Join as</div>
       <div>

@@ -34,7 +34,7 @@ Deno.serve(request => {
 
   /* Room ID checking */
   const room_id = url.pathname.split("/")[3];
-  const is_room_id_correct = Boolean(room_id) && is_only_num_alp(room_id).is_correct; // If room_id is undefined or empty string, it be false
+  const is_room_id_correct = Boolean(room_id) && (is_only_num_alp(room_id) === 0);  // If room_id is undefined or empty string, it be false
 
 
   /* API endpoints */
