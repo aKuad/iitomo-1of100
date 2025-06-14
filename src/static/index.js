@@ -9,14 +9,6 @@ import { random_str_gen } from "./util/random_str_gen.js";
 
 globalThis.addEventListener("load", () => {
   const page_lang = new URL(location.href).pathname.split("/")[1];
-  const incorrect_reason_en = {};
-  incorrect_reason_en[1] = "Non-ascii character including";
-  incorrect_reason_en[2] = "Ascii space including";
-  incorrect_reason_en[3] = "Ascii symbol including";
-  const incorrect_reason_ja = {};
-  incorrect_reason_ja[1] = "半角英数字以外は使用できません";
-  incorrect_reason_ja[2] = "スペースは使用できません";
-  incorrect_reason_ja[3] = "記号は使用できません";
 
   document.getElementById("room-id-input").placeholder = random_str_gen(10);
 
