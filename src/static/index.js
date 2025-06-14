@@ -29,13 +29,13 @@ globalThis.addEventListener("load", () => {
       document.getElementById("join-moderator").href = `/${page_lang}/moderator/${room_id}`;
       document.getElementById("join-participant").classList.remove("link-disabled");
       document.getElementById("join-moderator").classList.remove("link-disabled");
-      document.getElementById("room-id-error").innerText = "";
+      document.getElementsByClassName("room-id-error-select")[0].checked = true;
     } else {
       document.getElementById("join-participant").href = "";
       document.getElementById("join-moderator").href = "";
       document.getElementById("join-participant").classList.add("link-disabled");
       document.getElementById("join-moderator").classList.add("link-disabled");
-      document.getElementById("room-id-error").innerText = page_lang === "ja" ? incorrect_reason_ja[id_check_result] : incorrect_reason_en[id_check_result];
+      document.getElementsByClassName("room-id-error-select")[id_check_result].checked = true;
     }
   });
 

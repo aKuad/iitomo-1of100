@@ -20,7 +20,12 @@
     <div class="centering">
       <div class="text-large">ルーム ID</div>
       <input id="room-id-input" class="input-button" type="text">
-      <div id="room-id-error" class="text-normal"></div>
+      <div id="room-id-error" class="text-normal">
+        <div class="room-id-error-text"><input type="radio" name="room-id-error-select" class="room-id-error-select"></div>
+        <div class="room-id-error-text"><input type="radio" name="room-id-error-select" class="room-id-error-select">半角英数字以外は使用できません</div>
+        <div class="room-id-error-text"><input type="radio" name="room-id-error-select" class="room-id-error-select">スペースは使用できません</div>
+        <div class="room-id-error-text"><input type="radio" name="room-id-error-select" class="room-id-error-select">記号は使用できません</div>
+      </div>
 
       <div class="text-large">ルームに接続する</div>
       <div>
