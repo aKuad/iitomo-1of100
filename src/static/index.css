@@ -11,6 +11,16 @@
   min-height: 1.2em;
 }
 
+.room-id-error-select {
+  display: none;
+}
+.room-id-error-text {
+  display: none;
+}
+.room-id-error-text:has(.room-id-error-select:checked) {
+  display: initial;
+}
+
 
 /* Join buttons */
 #join-participant, #join-moderator {

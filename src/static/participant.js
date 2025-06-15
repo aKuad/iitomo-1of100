@@ -29,11 +29,11 @@ globalThis.addEventListener("load", () => {
           if(boolean_value) {
             // Survey started
             document.getElementById("response-input").checked = false;
-            document.getElementById("info-view").innerText = page_lang === "ja" ? "チェックを入れて 'Yes' と回答！" : "Check here to answer 'Yes' !";
+            document.getElementsByClassName("info-view-select")[1].checked = true;
             document.getElementById("response-input").disabled = false;
           } else {
             // Survey ended
-            document.getElementById("info-view").innerText = page_lang === "ja" ? "次の質問をお待ちください..." : "Wait for next question...";
+            document.getElementsByClassName("info-view-select")[2].checked = true;
             document.getElementById("response-input").disabled = true;
           }
           break;

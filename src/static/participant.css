@@ -13,6 +13,18 @@
 }
 
 
+/* Info view control */
+.info-view-select {
+  display: none;
+}
+.info-view-text {
+  display: none;
+}
+.info-view-text:has(.info-view-select:checked) {
+  display: initial;
+}
+
+
 /* Control elements */
 #response-input {
   display: block;

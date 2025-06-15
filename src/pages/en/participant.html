@@ -16,7 +16,11 @@
   <body>
     <header>Iitomo 1of100</header>
     <div class="centering">
-      <div id="info-view" class="text-large">Wait for start...</div>
+      <div id="info-view" class="text-large">
+        <div class="info-view-text"><input type="radio" name="info-view-select" class="info-view-select" checked>Wait for start...</div>
+        <div class="info-view-text"><input type="radio" name="info-view-select" class="info-view-select"        >Check here to answer 'Yes' !</div>
+        <div class="info-view-text"><input type="radio" name="info-view-select" class="info-view-select"        >Wait for next question...</div>
+      </div>
       <input id="response-input" type="checkbox" disabled>
       <div id="room-id-view" class="text-normal"></div>
       <div style="text-align: right;"><input type="checkbox" id="wakelock-enable"><label id="wakelock-enable-label" for="wakelock-enable">Keep display ON</label></div>
