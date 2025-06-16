@@ -23,7 +23,11 @@
       </div>
       <input id="response-input" type="checkbox" disabled>
       <div id="room-id-view" class="text-normal"></div>
-      <div style="text-align: right;"><input type="checkbox" id="wakelock-enable"><label id="wakelock-enable-label" for="wakelock-enable">Keep display ON</label></div>
+      <div style="text-align: center;">
+        <input type="checkbox" id="wakelock-enable">
+        <label id="wakelock-enable-label" for="wakelock-enable">Keep display ON</label>
+        <label id="wakelock-enable-label-unsupported" for="wakelock-enable" style="display: none;">Keep display ON<br>(Unsupported on this device)</label>
+      </div>
     </div>
     <div id="error-view"></div>
   </body>

@@ -69,7 +69,8 @@ globalThis.addEventListener("load", () => {
   const wake_lock_keep = new WakeLockKeep();
   if(!wake_lock_keep.is_wakelock_available) {
     document.getElementById("wakelock-enable").disabled = true;
-    document.getElementById("wakelock-enable-label").innerText += page_lang === "ja" ? "\r(このデバイスでは未サポート)" : "\r(Unsupported on this device)";
+    document.getElementById("wakelock-enable-label").style.display = "none";
+    document.getElementById("wakelock-enable-label-unsupported").style.display = "";
   }
 
   document.getElementById("wakelock-enable").addEventListener("input", e => {
