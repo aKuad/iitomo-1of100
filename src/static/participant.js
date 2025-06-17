@@ -15,7 +15,6 @@ globalThis.addEventListener("load", () => {
 
 
   /* Variables */
-  const page_lang = new URL(location.href).pathname.split("/")[1];
   const ws = new WebSocket(`/api/participant/${room_id}`);
   ws.binaryType = "arraybuffer";
 
@@ -41,10 +40,10 @@ globalThis.addEventListener("load", () => {
         case PACKET_ID_MODERATOR_STATUS:
           if(boolean_value) {
             // Moderator is connecting
-            document.getElementById("error-view").innerText = ""; // Clear error view
+            document.getElementById("error-mes-no-moderator").style.display = "none";  // Hide error mes
           } else {
             // Moderator is not connecting
-            document.getElementById("error-view").innerText = page_lang === "ja" ? "司会者が接続していません" : "Moderator is not here";
+            document.getElementById("error-mes-no-moderator").style.display = ""; // View error mes
           }
           break;
 
