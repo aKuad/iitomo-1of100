@@ -15,7 +15,6 @@ globalThis.addEventListener("load", () => {
 
 
   /* Variables */
-  const page_lang = new URL(location.href).pathname.split("/")[1];
   const ws = new WebSocket(`/api/participant/${room_id}`);
   ws.binaryType = "arraybuffer";
 
@@ -29,11 +28,11 @@ globalThis.addEventListener("load", () => {
           if(boolean_value) {
             // Survey started
             document.getElementById("response-input").checked = false;
-            document.getElementById("info-view").innerText = page_lang === "ja" ? "チェックを入れて 'Yes' と回答！" : "Check here to answer 'Yes' !";
+            document.getElementsByClassName("info-view-select")[1].checked = true;
             document.getElementById("response-input").disabled = false;
           } else {
             // Survey ended
-            document.getElementById("info-view").innerText = page_lang === "ja" ? "次の質問をお待ちください..." : "Wait for next question...";
+            document.getElementsByClassName("info-view-select")[2].checked = true;
             document.getElementById("response-input").disabled = true;
           }
           break;
@@ -41,10 +40,10 @@ globalThis.addEventListener("load", () => {
         case PACKET_ID_MODERATOR_STATUS:
           if(boolean_value) {
             // Moderator is connecting
-            document.getElementById("error-view").innerText = ""; // Clear error view
+            document.getElementById("error-mes-no-moderator").style.display = "none";  // Hide error mes
           } else {
             // Moderator is not connecting
-            document.getElementById("error-view").innerText = page_lang === "ja" ? "司会者が接続していません" : "Moderator is not here";
+            document.getElementById("error-mes-no-moderator").style.display = ""; // View error mes
           }
           break;
 
@@ -69,7 +68,8 @@ globalThis.addEventListener("load", () => {
   const wake_lock_keep = new WakeLockKeep();
   if(!wake_lock_keep.is_wakelock_available) {
     document.getElementById("wakelock-enable").disabled = true;
-    document.getElementById("wakelock-enable-label").innerText += page_lang === "ja" ? "\r(このデバイスでは未サポート)" : "\r(Unsupported on this device)";
+    document.getElementById("wakelock-enable-label").style.display = "none";
+    document.getElementById("wakelock-enable-label-unsupported").style.display = "";
   }
 
   document.getElementById("wakelock-enable").addEventListener("input", e => {

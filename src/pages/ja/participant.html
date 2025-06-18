@@ -16,11 +16,19 @@
   <body>
     <header>Iitomo 1of100</header>
     <div class="centering">
-      <div id="info-view" class="text-large">開始をお待ちください...</div>
+      <div id="info-view" class="text-large">
+        <div class="info-view-text"><input type="radio" name="info-view-select" class="info-view-select" checked>開始をお待ちください...</div>
+        <div class="info-view-text"><input type="radio" name="info-view-select" class="info-view-select"        >チェックを入れて 'Yes' と回答！</div>
+        <div class="info-view-text"><input type="radio" name="info-view-select" class="info-view-select"        >次の質問をお待ちください...</div>
+      </div>
       <input id="response-input" type="checkbox" disabled>
       <div id="room-id-view" class="text-normal"></div>
-      <div style="text-align: right;"><input type="checkbox" id="wakelock-enable"><label id="wakelock-enable-label" for="wakelock-enable">自動スリープを抑止</label></div>
+      <div style="text-align: center;">
+        <input type="checkbox" id="wakelock-enable">
+        <label id="wakelock-enable-label" for="wakelock-enable">自動スリープを抑止</label>
+        <label id="wakelock-enable-label-unsupported" for="wakelock-enable" style="display: none;">自動スリープを抑止<br>(このデバイスでは未サポート)</label>
+      </div>
     </div>
-    <div id="error-view"></div>
+    <div id="error-view"><span id="error-mes-no-moderator" style="display: none;">司会者が接続していません</span></div>
   </body>
 </html>
