@@ -42,8 +42,8 @@ deno run --allow-net --allow-read main.ts
 
 ## License
 
-Iitomo 1of100 - [CC0](./LICENSE)
+Iitomo 1of100 - [CC0-1.0](./LICENSE)
 
 QRCode.js - [MIT License](https://github.com/davidshimjs/qrcodejs/blob/master/LICENSE)
 
-DSEG - [SIL OPEN FONT LICENSE](https://github.com/keshikan/DSEG/blob/master/DSEG-LICENSE.txt)
+DSEG - [SIL OPEN FONT LICENSE 1.1](https://github.com/keshikan/DSEG/blob/master/DSEG-LICENSE.txt)
