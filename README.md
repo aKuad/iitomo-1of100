@@ -44,6 +44,6 @@ deno run --allow-net --allow-read main.ts
 
 Iitomo 1of100 - [CC0-1.0](./LICENSE)
 
-QRCode.js - [MIT License](https://github.com/davidshimjs/qrcodejs/blob/master/LICENSE)
+QRCode.js - [MIT License](./LICENSE-QRCodejs)
 
-DSEG - [SIL OPEN FONT LICENSE 1.1](https://github.com/keshikan/DSEG/blob/master/DSEG-LICENSE.txt)
+DSEG - [SIL OPEN FONT LICENSE 1.1](./LICENSE-DSEG)
