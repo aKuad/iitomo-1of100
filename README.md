@@ -42,7 +42,7 @@ deno run --allow-net --allow-read main.ts
 
 ## License
 
-Iitomo 1of100 - [CC0-1.0](./LICENSE)
+Iitomo 1of100 - [Creative Commons Zero v1.0](./LICENSE)
 
 QRCode.js - [MIT License](./LICENSE-QRCodejs)
 
