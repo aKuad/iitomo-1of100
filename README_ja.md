@@ -6,7 +6,7 @@
 
 笑っていいとも!100人中1人アンケートシステム
 
-[オンラインで利用可能です！](https://iitomo-1of100.deno.dev/)
+[オンラインで利用可能です！](https://iitomo-1of100.app/)
 
 使い方も[オンラインで確認できます。](https://akuad.github.io/iitomo-1of100/ja.html)
 
