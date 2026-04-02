@@ -6,7 +6,7 @@
 
 ### 1.1. 司会者 参加
 
-トップページアクセスします: <https://iitomo-1of100.deno.dev/>
+トップページアクセスします: <https://iitomo-1of100.app/>
 
 セルフホストの場合: `http(s)://<server-address>/`
 
@@ -38,7 +38,7 @@ QR コードを押下すると、大きいサイズで表示されます。
 
 ### b. ID 入力で参加
 
-トップページにアクセスします: <https://iitomo-1of100.deno.dev/>
+トップページにアクセスします: <https://iitomo-1of100.app/>
 
 セルフホストの場合: `http(s)://<server-address>/`
 

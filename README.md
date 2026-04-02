@@ -6,7 +6,7 @@ English | [日本語](./README_ja.md)
 
 Waratte iitomo! (A Japanese TV program) 1 of 100 survey system
 
-[It's available on online!](https://iitomo-1of100.deno.dev/)
+[It's available on online!](https://iitomo-1of100.app/)
 
 Usage guide is [also available on online.](https://akuad.github.io/iitomo-1of100)
 

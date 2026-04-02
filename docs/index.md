@@ -6,7 +6,7 @@ English | [日本語](./ja.html)
 
 ### 1.1. Moderator join
 
-Access to: <https://iitomo-1of100.deno.dev/>
+Access to: <https://iitomo-1of100.app/>
 
 For self hosted: `http(s)://<server-address>/`
 
@@ -38,7 +38,7 @@ By clicking the QR, large view shown.
 
 ### b. By ID
 
-Access to: <https://iitomo-1of100.deno.dev/>
+Access to: <https://iitomo-1of100.app/>
 
 For self hosted: `http(s)://<server-address>/`
 
