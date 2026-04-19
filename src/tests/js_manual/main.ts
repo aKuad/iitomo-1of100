@@ -24,6 +24,20 @@ Deno.serve(request => {
 
 
   /* API endpoints */
+  // WebSocket API what automatically disconnect in 2 seconds
+  if(url.pathname.startsWith("/api/websocket-auto-disconnect")) {
+    if(request.headers.get("upgrade") === "websocket") {
+      const { socket, response } = Deno.upgradeWebSocket(request);
+      socket.addEventListener("message", e => socket.send(e.data)); // Data echo
+      setInterval(() => socket.close(), 2000);
+      return response;
+
+    } else {
+      new Response("This API is for websocket, protocol upgrade required", { status: 426 });
+    }
+  }
+
+
   // For participant test websocket server
   if(url.pathname.startsWith("/api/participant")) {
     if(request.headers.get("upgrade") === "websocket") {
