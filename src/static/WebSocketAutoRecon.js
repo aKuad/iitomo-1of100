@@ -22,6 +22,11 @@ export class WebSocketAutoRecon {
   #reconnect_ms;
 
   /**
+   * @type {boolean}
+   */
+  #is_manual_closed;
+
+  /**
    * Listener functions of WebSocket event 'open'
    *
    * @type {function[]}
@@ -59,6 +64,7 @@ export class WebSocketAutoRecon {
   constructor(url, reconnect_ms) {
     this.#ws = new WebSocket(url);
     this.#reconnect_ms = reconnect_ms;
+    this.#is_manual_closed = false;
 
     this.#on_open_listener    = [];
     this.#on_message_listener = [];
@@ -135,11 +141,29 @@ export class WebSocketAutoRecon {
 
 
   /**
+   * Compatible method of `WebSocket.close()`
+   *
+   * When call it, reconnection won't be work
+   *
+   * @param {number} code Close code
+   * @param {string} reason Close reason
+   */
+  close(code, reason) {
+    this.#is_manual_closed = true;
+    this.#ws.close(code, reason);
+  }
+
+
+  /**
    * Reconnect with same URL and listener after specified duration waited
    */
   async #reconnect() {
     const reconnect_ms = this.#reconnect_ms;
     await new Promise(resolve => setTimeout(resolve, reconnect_ms));
+
+    // When manually closed, not reconnect
+    if(this.#is_manual_closed)
+      return;
 
     // WebSocket re-instantiate with same URL
     const url = this.#ws.url;

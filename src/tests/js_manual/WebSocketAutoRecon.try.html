@@ -17,14 +17,14 @@
        *   - Can set event listener compatible with `WebSocket`
        *   - Can send data compatible with `WebSocket`
        *   - Can get connection state compatible with `WebSocket`
+       *   - Can close connection manually, then not reconnect at this situation
        */
       import { WebSocketAutoRecon } from "/static/WebSocketAutoRecon.js"
 
       window.addEventListener("load", () => {
         const web_socket_auto_recon = new WebSocketAutoRecon("/api/websocket-auto-disconnect", 3000);
         web_socket_auto_recon.addEventListener("open" , () => console.log("Opened - Expects disconnected after 2 sec"));
-        web_socket_auto_recon.addEventListener("close", () => console.log("Closed - Expects connected after 3 sec"));
-        web_socket_auto_recon.addEventListener("error", () => console.log("Error - Expects connected after 3 sec"));
+        web_socket_auto_recon.addEventListener("close", () => console.log("Closed - Expects connected after 3 sec (when not manually closed)"));
 
         document.getElementById("ws-send").addEventListener("click", () => {
           web_socket_auto_recon.send(document.getElementById("ws-data").value);
@@ -37,6 +37,10 @@
         document.getElementById("ws-state").addEventListener("click", () => {
           console.log(`WebSocket state - ${web_socket_auto_recon.readyState}`);
         });
+
+        document.getElementById("ws-close").addEventListener("click", () => {
+          web_socket_auto_recon.close();
+        });
       });
     </script>
   </head>
@@ -44,5 +48,6 @@
   <body>
     <p><input type="text" id="ws-data"><button id="ws-send">Send</button></p>
     <p><button id="ws-state">See readyState</button></p>
+    <p><button id="ws-close">Close</button></p>
   </body>
 </html>
