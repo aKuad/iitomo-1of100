@@ -69,7 +69,7 @@ globalThis.addEventListener("load", () => {
 
   // On page leave
   globalThis.addEventListener("beforeunload", () => {
-    document.getElementById("error-view").style.display = "none"; // Error view disable for correctly disconnection
+    document.getElementById("error-view").remove(); // Error view disable for correctly disconnection
     ws.close();
   });
 
