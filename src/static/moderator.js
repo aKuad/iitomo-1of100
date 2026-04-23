@@ -8,6 +8,7 @@ import { encode_uint16_packet, decode_uint16_packet, is_uint16_packet, PACKET_ID
 import { Digits3Shuffle } from "./util/Digits3Shuffle.js";
 import { SEPlayer } from "./util/SEPlayer.js";
 import { WakeLockKeep } from "./util/WakeLockKeep.js";
+import { WebSocketAutoRecon } from "./WebSocketAutoRecon.js";
 
 
 globalThis.addEventListener("load", () => {
@@ -16,7 +17,7 @@ globalThis.addEventListener("load", () => {
   const se_player = new SEPlayer();
   const digits_3_shuffle = new Digits3Shuffle(document.getElementById("board-result-view"));
   let is_in_survey = false;
-  const ws = new WebSocket(`/api/moderator/${room_id}`);
+  const ws = new WebSocketAutoRecon(`/api/moderator/${room_id}`, 3000);
   ws.binaryType = "arraybuffer";
 
 
@@ -62,8 +63,8 @@ globalThis.addEventListener("load", () => {
 
 
   // Error view
-  ws.addEventListener("close", () => document.getElementById("error-view").innerText = "Connection closed by server");
-  ws.addEventListener("error", () => document.getElementById("error-view").innerText = "Connection closed by error");
+  ws.addEventListener("close", () => document.getElementById("error-view").style.display = "");
+  ws.addEventListener("open" , () => document.getElementById("error-view").style.display = "none"); // On reconnected
 
 
   // On page leave
