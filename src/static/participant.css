@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* Outline elements */
-#error-view {
+#error-view-no-moderator, #error-view-offline {
   color: hsl(0, 100%, 70%);
   font-size: 1rem;
 
@@ -9,7 +9,12 @@
   text-align: center;
   position: fixed;
   z-index: 100; /* High priority (Must be view) */
+}
+#error-view-offline {
   bottom: 5vh;
+}
+#error-view-no-moderator {
+  bottom: calc(5vh - 1.4em);
 }
 
 

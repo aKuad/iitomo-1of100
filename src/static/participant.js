@@ -5,6 +5,7 @@
  */
 
 import { is_boolean_packet, decode_boolean_packet, encode_boolean_packet, PACKET_ID_SURVEY_CONTROL, PACKET_ID_SURVEY_RESPONSE, PACKET_ID_MODERATOR_STATUS } from "./packet/boolean.js";
+import { WebSocketAutoRecon } from "./WebSocketAutoRecon.js";
 import { WakeLockKeep } from "./util/WakeLockKeep.js";
 
 
@@ -15,7 +16,7 @@ globalThis.addEventListener("load", () => {
 
 
   /* Variables */
-  const ws = new WebSocket(`/api/participant/${room_id}`);
+  const ws = new WebSocketAutoRecon(`/api/participant/${room_id}`, 3000);
   ws.binaryType = "arraybuffer";
 
 
@@ -40,10 +41,10 @@ globalThis.addEventListener("load", () => {
         case PACKET_ID_MODERATOR_STATUS:
           if(boolean_value) {
             // Moderator is connecting
-            document.getElementById("error-mes-no-moderator").style.display = "none";  // Hide error mes
+            document.getElementById("error-view-no-moderator").style.display = "none";  // Hide error mes
           } else {
             // Moderator is not connecting
-            document.getElementById("error-mes-no-moderator").style.display = ""; // View error mes
+            document.getElementById("error-view-no-moderator").style.display = ""; // View error mes
           }
           break;
 
@@ -53,13 +54,13 @@ globalThis.addEventListener("load", () => {
     }
   });
 
-  ws.addEventListener("close", () => document.getElementById("error-view").innerText = "Connection closed by server");
-  ws.addEventListener("error", () => document.getElementById("error-view").innerText = "Connection closed by error");
+  ws.addEventListener("close", () => document.getElementById("error-view-offline").style.display = "");
+  ws.addEventListener("open" , () => document.getElementById("error-view-offline").style.display = "none");
 
 
   /* Response process */
   document.getElementById("response-input").addEventListener("input", e => {
-    if(ws.readyState !== ws.OPEN) return; // When connection unavailable, do nothing
+    if(ws.readyState !== WebSocket.OPEN) return; // When connection unavailable, do nothing
     ws.send(encode_boolean_packet(PACKET_ID_SURVEY_RESPONSE, e.target.checked));
   });
 
